@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CHKAOS</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="/MIT-Challenge/egg.png">
+    <meta name="description" content="My MIT Challenge inspired by Scott Young">
+    <link rel="preload" href="/MIT-Challenge/assets/css/0.styles.16a4b952.css" as="style"><link rel="preload" href="/MIT-Challenge/assets/js/app.9347c0b5.js" as="script"><link rel="preload" href="/MIT-Challenge/assets/js/6.7cbe9404.js" as="script"><link rel="prefetch" href="/MIT-Challenge/assets/js/10.2caec536.js"><link rel="prefetch" href="/MIT-Challenge/assets/js/11.b0257b97.js"><link rel="prefetch" href="/MIT-Challenge/assets/js/12.804b825b.js"><link rel="prefetch" href="/MIT-Challenge/assets/js/13.8ba94e09.js"><link rel="prefetch" href="/MIT-Challenge/assets/js/14.c0701805.js"><link rel="prefetch" href="/MIT-Challenge/assets/js/2.471bab60.js"><link rel="prefetch" href="/MIT-Challenge/assets/js/3.80b7e3fe.js"><link rel="prefetch" href="/MIT-Challenge/assets/js/4.aca4fc84.js"><link rel="prefetch" href="/MIT-Challenge/assets/js/5.3661192c.js"><link rel="prefetch" href="/MIT-Challenge/assets/js/7.91d1ddd0.js"><link rel="prefetch" href="/MIT-Challenge/assets/js/8.1bb6626f.js"><link rel="prefetch" href="/MIT-Challenge/assets/js/9.6e262378.js">
+    <link rel="stylesheet" href="/MIT-Challenge/assets/css/0.styles.16a4b952.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><div class="theme-default-content"><h1>404</h1> <blockquote>Looks like we've got some broken links.</blockquote> <a href="/MIT-Challenge/" class="router-link-active">
+      Take me home.
+    </a></div></div><div class="global-ui"></div></div>
+    <script src="/MIT-Challenge/assets/js/app.9347c0b5.js" defer></script><script src="/MIT-Challenge/assets/js/6.7cbe9404.js" defer></script>
+  </body>
+</html>
