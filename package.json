@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vuepress dev docs --temp .temp",
     "build": "vuepress build docs",
-    "deploy": "bash deploy.sh",
-    "publish": "npm run build && npm run deploy"
+    "deploy": "bash deploy.sh"
   },
   "repository": {
     "type": "git",
