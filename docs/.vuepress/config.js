@@ -1,6 +1,6 @@
 
 module.exports = {
-    base: "/",
+    base: "/note/",
     title: 'CHKAOS', // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
     description: 'My Note Collection', // meta 中的描述文字，用于SEO
     // 注入到当前页面的 HTML <head> 中的标签
@@ -19,6 +19,7 @@ module.exports = {
         ],
         docsRepo: 'chkaos/note',
         docsDir: '/',
+        smoothScroll: true
     },
 
     plugins: ['permalink-pinyin', ['autobar', { 'pinyinNav': true }], 'rpurl'],

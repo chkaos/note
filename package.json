@@ -4,21 +4,22 @@
   "description": "My MIT Challenge inspired by Scott Young",
   "main": "index.js",
   "scripts": {
-    "dev": "vuepress dev docs",
+    "dev": "vuepress dev docs --temp .temp",
     "build": "vuepress build docs",
-    "deploy": "bash deploy.sh"
+    "deploy": "bash deploy.sh",
+    "publish": "npm run build && npm run deploy"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chkaos/MIT-Challenge.git"
+    "url": "git+https://github.com/chkaos/note.git"
   },
   "keywords": [],
   "author": "Chkaos",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chkaos/MIT-Challenge/issues"
+    "url": "https://github.com/chkaos/note/issues"
   },
-  "homepage": "https://github.com/chkaos/MIT-Challenge#readme",
+  "homepage": "https://github.com/chkaos/note#readme",
   "devDependencies": {
     "vuepress": "^1.1.0",
     "vuepress-plugin-autobar": "github:boboidream/vuepress-bar",

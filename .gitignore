@@ -15,3 +15,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# vuepress temp file
+.temp
