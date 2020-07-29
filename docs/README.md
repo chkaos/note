@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /egg.png
+heroImage: /favicon.png
 heroText: My note
 tagline: 一点一滴都是进步
 actionText: 马上进入
