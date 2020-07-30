@@ -11,7 +11,7 @@ module.exports = {
         lineNumbers: true
     },
     themeConfig: {
-        logo: '/egg.png',
+        logo: '/favicon.png',
         lastUpdated: 'lastUpdate', // string | boolean
         nav: [
             { text: '博客', link: 'http://chkaos.top' },
