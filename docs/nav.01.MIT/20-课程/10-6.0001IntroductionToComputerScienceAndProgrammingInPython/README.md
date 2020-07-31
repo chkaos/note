@@ -48,12 +48,32 @@ integrated development environment (IDE) : 集成开发环境
 
 ## 	3.String Manipulation, Guess and Check, Approximations, Bisection
 
-## 	4.Decomposition, Abstractions, Functions
+二分法
 
+## 	4.Decomposition, Abstractions, Functions
+Decomposition: 合理地将问题逐步分解成的不同独立的小模块
+
+Abstraction: 抽象, 隐藏细节. 即不需要了解内部构造及其原理也可以使用. 有效使用抽象的关键在于寻找一种适用于抽象的构建者和抽象的潜在客户的相关性概念.
+。
 ## 	5.Tuples, Lists, Aliasing, Mutability, Cloning
 
+Higher-order programming is a style of computer programming that uses software components, like functions, modules or objects, as values. It is usually instantiated with, or borrowed from, models of computation such as lambda calculus which make heavy use of higher-order functions.
+
 ## 	6. Recursion, Dictionaries
- 递归 汉娜塔 斐波那契优化 利用字典缓存计算过的结果
+ 递归(recursion): 在数学与计算机科学中，语义上是指在函数的定义中使用函数自身的方法
+ <!-- 计算机科学中，分治法是建基于多项分支递归的一种很重要的算法范式。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法、傅立叶变换。 -->
+ 汉娜塔 斐波那契优化 利用字典缓存计算过的结果
+
+Algorithmically: a way to design soluSons to problems
+by divide-and-conquer or decrease-and-conquer
+◦ reduce a problem to simpler versions of the same
+problem
+ SemanScally: a programming technique where a
+func0on calls itself
+◦ in programming, goal is to NOT have infinite recursion
+◦ must have 1 or more base cases that are easy to solve
+◦ must solve the same problem on some other input with the goal
+of simplifying the larger problem input
 
 ## 	7. Testing, Debugging, Exceptions, Assertions
 
@@ -61,8 +81,6 @@ integrated development environment (IDE) : 集成开发环境
 
 ## 	9.	Python Classes and Inheritance
 
-## 	10. Understanding Program Efficiency, Part 1
-
-## 	11. Understanding Program Efficiency, Part 2
+## 	10-11. Understanding Program Efficiency
 
 ##  12.	Searching and Sorting
