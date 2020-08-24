@@ -11,7 +11,7 @@ https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-0001-i
 (问题解答在这)[https://github.com/chkaos/mit-solution/6.0001]
 
 
-## 	1.What is computation?
+##  1.What is computation?
 计算机的作用: 
 - 功能上执行计算和记住运算的结果；
 - A computer does two things, and two things only: it performs calculations and it remembers the results of those calculations.
@@ -44,43 +44,101 @@ integrated development environment (IDE) : 集成开发环境
 
 从第二节开始，很大部分内容讲解了Python的各种数据类型及其操作，控制流，函数、常用的api等编程语言基本元素不再赘述。看书这些章节会快速过并完成对应的finger excercise。
 
-## 	2.Branching and Iteration
+##  2.Branching and Iteration
 
-## 	3.String Manipulation, Guess and Check, Approximations, Bisection
+##  3.String Manipulation, Guess and Check, Approximations, Bisection
 
 二分法
 
-## 	4.Decomposition, Abstractions, Functions
+##  4.Decomposition, Abstractions, Functions
 Decomposition: 合理地将问题逐步分解成的不同独立的小模块
 
 Abstraction: 抽象, 隐藏细节. 即不需要了解内部构造及其原理也可以使用. 有效使用抽象的关键在于寻找一种适用于抽象的构建者和抽象的潜在客户的相关性概念.
 。
-## 	5.Tuples, Lists, Aliasing, Mutability, Cloning
+##  5.Tuples, Lists, Aliasing, Mutability, Cloning
 
 Higher-order programming is a style of computer programming that uses software components, like functions, modules or objects, as values. It is usually instantiated with, or borrowed from, models of computation such as lambda calculus which make heavy use of higher-order functions.
 
-## 	6. Recursion, Dictionaries
+##  6. Recursion, Dictionaries
  递归(recursion): 在数学与计算机科学中，语义上是指在函数的定义中使用函数自身的方法
  <!-- 计算机科学中，分治法是建基于多项分支递归的一种很重要的算法范式。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法、傅立叶变换。 -->
  汉娜塔 斐波那契优化 利用字典缓存计算过的结果
 
 Algorithmically: a way to design soluSons to problems
 by divide-and-conquer or decrease-and-conquer
-◦ reduce a problem to simpler versions of the same
+◦ reduce a problem to simpler versions of the stime
 problem
  SemanScally: a programming technique where a
 func0on calls itself
 ◦ in programming, goal is to NOT have infinite recursion
 ◦ must have 1 or more base cases that are easy to solve
-◦ must solve the same problem on some other input with the goal
+◦ must solve the stime problem on some other input with the goal
 of simplifying the larger problem input
 
-## 	7. Testing, Debugging, Exceptions, Assertions
+##  7. Testing, Debugging, Exceptions, Assertions
+测试: 运行程序以尝试确定是否如设想般正常工作的过程。
+调试: 修复未如设想正常工作的程序的过程。
 
-## 	8. Object Oriented Programming
+#### Testing
+尽量考虑所有可能的输入及各种边界情况;
 
-## 	9.	Python Classes and Inheritance
+白盒测试又称透明盒测试、结构测试等，软件测试的主要方法之一，也称结构测试、逻辑驱动测试或基于程序本身的测试。测试应用程序的内部结构或运作，而不是测试应用程序的功能。在白盒测试时，以编程语言的角度来设计测试案例。测试者输入数据验证数据流在程序中的流动路径，并确定适当的输出，类似测试电路中的节点。
 
-## 	10-11. Understanding Program Efficiency
+黑盒测试，软件测试的主要方法之一，也可以称为功能测试、数据驱动测试或基于规格说明的测试。测试者不了解程序的内部情况，不需具备应用程序的代码、内部结构和编程语言的专门知识。只知道程序的输入、输出和系统的功能，这是从用户的角度针对软件界面、功能及外部结构进行测试，而不考虑程序内部逻辑结构；
 
-##  12.	Searching and Sorting
+单元测试（英語：Unit Testing）又称为模块测试，是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。 程序单元是应用的最小可测试部件。 在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。
+
+集成测试，也叫组装测试或联合测试。 在单元测试的基础上，将所有模块按照设计要求（如根据结构图）组装成为子系统或系统，进行集成测试。 实践表明，一些模块虽然能够单独地工作，但并不能保证连接起来也能正常的工作。 一些局部反映不出来的问题，在全局上很可能暴露出来。
+
+测试驱动程序 test drivers /存根stubs等
+
+回归测试: 测试原有功能在修改后能否保持完成。
+
+#### Debugging
+
+Debug? 设计如此，不予解决。
+
+#### Exceptions, Assertions
+异常处理和断言
+
+##  8. Object Oriented Programming
+
+面向对象编程的关键: 编程人员将对象视为数据和处理该数据的方法的集合。
+
+看到上面那句话时，才对陌生的面向对象有了醍醐灌顶的感觉，具体实现不累述。
+
+> Data abstraction encourages program designers to focus on the centrality of data objects rather than functions. Thinking about a program more as a collection of types than as a collection of functions leads to a profoundly different organizing principle. Among other things, it encourages one to think about programming as a process of combining relatively large chunks, since data abstractions typically encompass more functionality than do individual functions.
+
+##  9. Python Classes and Inheritance
+
+##  10-11. Understanding Program Efficiency
+
+衡量计算复杂度
+计时
+- 受计算机运行速度影响
+- 受不同算法，软件实施影响
+- 受输入值 input 的值大小影响
+
+count operations
+假设某些步骤占用一个常量时间单位，然后根据循环等计算每个步骤的执行数量
+- 受不同算法影响
+- 用于计算的操作步骤定义不明确
+- 受输入值 input 的值大小影响且无法联系输入与计数值的关系
+
+Big O notation (abstract notion of order of growth)
+
+In general, there are three broad cases to think about: best case， worse case，the average-case (also called expected-case).
+
+Asymptotic notations are the mathematical notations used to describe the running time of an algorithm when the input tends towards a particular value or a limiting value. 
+
+比起 operations counting, abstract notion 假设当输入大到一定程度，可忽略常量和倍增因子，只关注主要项
+
+| COMPLEXITY CLASSES | 含义                                                                                           | 常见示例                    |
+| ------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------- |
+| O(1)               | denotes constant running time                                                                    |                                 |
+| O(n)               | denotes linear running time                                                                      | 典型的简单循环           |
+| O(log n)           | denotes log-linear running time                                                                  |                                 |
+| O(nc)              | denotes polynomial running time (c is a constant)                                                | 循环嵌套循环-二次方复杂度 O(n2) |
+| O(cn)              | denotes exponenAal running time (c is a constant being raised to a power based on size of input) |                                 |
+
+##  12. Searching and Sorting
