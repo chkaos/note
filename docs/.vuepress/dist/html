@@ -7,13 +7,13 @@
     <meta name="generator" content="VuePress 1.5.2">
     <link rel="icon" href="/note/egg.png">
     <meta name="description" content="My Note Collection">
-    <link rel="preload" href="/note/assets/css/0.styles.90fca9c0.css" as="style"><link rel="preload" href="/note/assets/js/app.ab8d81e1.js" as="script"><link rel="preload" href="/note/assets/js/6.2377babe.js" as="script"><link rel="prefetch" href="/note/assets/js/10.f2666dfd.js"><link rel="prefetch" href="/note/assets/js/11.d671a0a4.js"><link rel="prefetch" href="/note/assets/js/2.6a5cc212.js"><link rel="prefetch" href="/note/assets/js/3.7d29572d.js"><link rel="prefetch" href="/note/assets/js/4.4132c082.js"><link rel="prefetch" href="/note/assets/js/5.39b3e790.js"><link rel="prefetch" href="/note/assets/js/7.9b9ef976.js"><link rel="prefetch" href="/note/assets/js/8.57d3b793.js"><link rel="prefetch" href="/note/assets/js/9.ebe374a0.js">
-    <link rel="stylesheet" href="/note/assets/css/0.styles.90fca9c0.css">
+    <link rel="preload" href="/note/assets/css/0.styles.e87deabf.css" as="style"><link rel="preload" href="/note/assets/js/app.423f7cf0.js" as="script"><link rel="preload" href="/note/assets/js/6.a03223ed.js" as="script"><link rel="prefetch" href="/note/assets/js/10.d8b8694c.js"><link rel="prefetch" href="/note/assets/js/11.e52f77fe.js"><link rel="prefetch" href="/note/assets/js/12.8390f71d.js"><link rel="prefetch" href="/note/assets/js/13.e1a0f3e4.js"><link rel="prefetch" href="/note/assets/js/14.7ad9f46b.js"><link rel="prefetch" href="/note/assets/js/15.ed9b98d3.js"><link rel="prefetch" href="/note/assets/js/16.6425d4c1.js"><link rel="prefetch" href="/note/assets/js/2.f82341c8.js"><link rel="prefetch" href="/note/assets/js/3.170c806b.js"><link rel="prefetch" href="/note/assets/js/4.1aaf9866.js"><link rel="prefetch" href="/note/assets/js/5.5c8c0eb9.js"><link rel="prefetch" href="/note/assets/js/7.e26d57ac.js"><link rel="prefetch" href="/note/assets/js/8.7956b2e9.js"><link rel="prefetch" href="/note/assets/js/9.71e9d7e0.js">
+    <link rel="stylesheet" href="/note/assets/css/0.styles.e87deabf.css">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="theme-container"><div class="theme-default-content"><h1>404</h1> <blockquote>How did we get here?</blockquote> <a href="/note/" class="router-link-active">
+    <div id="app" data-server-rendered="true"><div class="theme-container"><div class="theme-default-content"><h1>404</h1> <blockquote>That's a Four-Oh-Four.</blockquote> <a href="/note/" class="router-link-active">
       Take me home.
     </a></div></div><div class="global-ui"></div></div>
-    <script src="/note/assets/js/app.ab8d81e1.js" defer></script><script src="/note/assets/js/6.2377babe.js" defer></script>
+    <script src="/note/assets/js/app.423f7cf0.js" defer></script><script src="/note/assets/js/6.a03223ed.js" defer></script>
   </body>
 </html>
