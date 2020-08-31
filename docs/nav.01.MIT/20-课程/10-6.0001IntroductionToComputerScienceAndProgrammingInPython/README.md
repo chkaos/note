@@ -131,3 +131,22 @@ Higher-order programming is a style of computer programming that uses software c
 ## 	10-11. Understanding Program Efficiency
 
 ##  12.	Searching and Sorting
+
+#### Search Algorithms
+普通查找 linear, 下面简化均以int类型数组演示
+```go
+func linearSearch(target int, array []int) bool {
+	for _, item := range array {
+		if item == target {
+			return true
+		}
+	}
+	return false
+}
+```
+#### Sorting Algorithms
+文中暂时只介绍了选择排序和归并排序, 后期看到算法再进行拓展.
+排序单独写一个文档, [链接在此](./SortingAlgorithms.md)
+
+#### Hash Tables
+课程还提及了哈希表等到下次数据结构再细讲．
