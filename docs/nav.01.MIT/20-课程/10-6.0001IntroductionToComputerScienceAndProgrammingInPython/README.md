@@ -59,21 +59,68 @@ Abstraction: 抽象, 隐藏细节. 即不需要了解内部构造及其原理也
 
 Higher-order programming is a style of computer programming that uses software components, like functions, modules or objects, as values. It is usually instantiated with, or borrowed from, models of computation such as lambda calculus which make heavy use of higher-order functions.
 
-##  6. Recursion, Dictionaries
- 递归(recursion): 在数学与计算机科学中，语义上是指在函数的定义中使用函数自身的方法
+## 	6. Recursion, Dictionaries
+ 递归(recursion): 
+ 语义上是指在函数的定义中使用函数自身的方法
+ - 至少有一种或多种易于解答的base case， 目标不是无限递归;
+ 算法上是指一种解决问题的思维方式， 通过分治法（divide-and-conquer）或减治法（decrease-and-conquer）把一个复杂的问题分成两个或更多的相同或相似的子问题，直到最后子问题可以简单的直接求解。
  <!-- 计算机科学中，分治法是建基于多项分支递归的一种很重要的算法范式。字面上的解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如排序算法、傅立叶变换。 -->
- 汉娜塔 斐波那契优化 利用字典缓存计算过的结果
 
-Algorithmically: a way to design soluSons to problems
-by divide-and-conquer or decrease-and-conquer
-◦ reduce a problem to simpler versions of the stime
-problem
- SemanScally: a programming technique where a
-func0on calls itself
-◦ in programming, goal is to NOT have infinite recursion
-◦ must have 1 or more base cases that are easy to solve
-◦ must solve the stime problem on some other input with the goal
-of simplifying the larger problem input
+ 先来一个最常见的阶乘递归
+ ```go
+ func factorial(n int) int {
+	if n == 1 {
+		return n
+	}
+
+	return n * factorial(n-1)
+ }
+ ```
+ 递归理解更加简单, 更符合人类的直觉, 从效率上讲,迭代更加符合计算机层面;
+
+ 汉诺塔问题
+ ```go
+ func printMove(fr, to string) {
+    fmt.Printf("move from %s to %s\n", fr, to)
+  }
+
+  func Towers(n int, fr, to, spare string) {
+    if n == 1 {
+      printMove(fr, to)
+    } else {
+      Towers(n-1, fr, spare, to)
+      Towers(1, fr, to, spare)
+      Towers(n-1, spare, to, fr)
+    }
+  }
+
+ ```
+ 斐波那契, 并缓存计算过的结果来优化
+```go
+  // 普通版 
+ func fibR(n int) int {
+	if n == 1 || n == 0 {
+		return n
+	}
+
+	return fibR(n-1) + fibR(n-2)
+ }
+
+ func fibL(n int) int {
+	var fib = map[int]int{0: 1, 1: 1}
+
+	if n == 1 || n == 0 {
+		return n
+	}
+
+	for i := 2; i <= n; i++ {
+		fib[i] = fib[i-1] + fib[i-2]
+	}
+
+	return fib[n]
+}
+
+ ```
 
 ##  7. Testing, Debugging, Exceptions, Assertions
 测试: 运行程序以尝试确定是否如设想般正常工作的过程。
@@ -125,9 +172,11 @@ count operations
 - 用于计算的操作步骤定义不明确
 - 受输入值 input 的值大小影响且无法联系输入与计数值的关系
 
-Big O notation (abstract notion of order of growth)
+Big O notation (abstract notion of order of growth) 受到普遍认可的一种描述算法运行时间和输入大小之前关系的方法
 
 In general, there are three broad cases to think about: best case， worse case，the average-case (also called expected-case).
+
+墨菲定律，假如一件事可能发生，那它就一定会发生。所以通常我们只关心 worse case, 因为它是运行时的上限。
 
 Asymptotic notations are the mathematical notations used to describe the running time of an algorithm when the input tends towards a particular value or a limiting value. 
 
@@ -136,9 +185,66 @@ Asymptotic notations are the mathematical notations used to describe the running
 | COMPLEXITY CLASSES | 含义                                                                                           | 常见示例                    |
 | ------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------- |
 | O(1)               | denotes constant running time                                                                    |                                 |
+| O(log n)               | denotes logarithmic running time                                                                    |binary search                                 |
 | O(n)               | denotes linear running time                                                                      | 典型的简单循环           |
-| O(log n)           | denotes log-linear running time                                                                  |                                 |
+| O(n log n)           | denotes log-linear running time                                                                  |  merge sort 等很多实用算法都是数线性                            |
 | O(nc)              | denotes polynomial running time (c is a constant)                                                | 循环嵌套循环-二次方复杂度 O(n2) |
 | O(cn)              | denotes exponenAal running time (c is a constant being raised to a power based on size of input) |                                 |
 
 ##  12. Searching and Sorting
+
+#### Search Algorithms
+
+如果给定的数组是按照从小到大排好序的, 那么线性循环可以改造如下方
+~~~go
+func linearSearchOnL(e int, L []int) bool {
+	for _, item := range L {
+		if item == e {
+			return true
+		}
+		if item > e {
+			return false
+		}
+	}
+	return false
+}
+
+// 递归版本的二分查找
+func binarySearch(e int, L []int) bool {
+	if len(L) == 0 {
+		return false
+	} else {
+		return binaryHelper(e, L, 0, len(L)-1)
+	}
+}
+
+func binaryHelper(e int, L []int, low, high int) bool {
+	if high == low {
+		return L[high] == e
+	}
+	mid := int(math.Floor(float64((low + high) / 2)))
+	if L[mid] == e {
+		return true
+	} else if L[mid] > e {
+		if mid == low {
+			return false
+		}
+		return binaryHelper(e, L, low, mid-1)
+
+	} else {
+		return binaryHelper(e, L, mid+1, high)
+	}
+}
+~~~
+
+#### Sorting Algorithms
+可以看到查找算法对于特定条件的列表(比如按顺序排列好的)的优化空间是很大的, 这不代表每次查找需要先对数组进行排序然后再查找。
+查找算法的时间复杂度无法低于线性O(n); 
+
+接下来我们看一些常见的排序算法:
+
+选择排序`Selection search`
+
+选择排序是一种简单直观的排序算法。它的工作原理如下。首先在未排序序列中找到最小元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。 选择排序的主要优点与数据移动有关。如果某个元素位于正确的最终位置上，则它不会被移动。
+~~~go
+~~~
