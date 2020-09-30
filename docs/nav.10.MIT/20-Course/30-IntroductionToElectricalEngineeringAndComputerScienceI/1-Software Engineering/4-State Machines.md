@@ -37,3 +37,9 @@ state machine (SM):
 
 ## 状态机 Example
 (Accumulator)[../Accumulator.js]
+
+#### 级联组合
+组合两个状态机, 第一个的输出作为第二个的输入
+
+#### 并行组合
+两个平行状态机并行, 分相同输入以及不同输入值两种情况
