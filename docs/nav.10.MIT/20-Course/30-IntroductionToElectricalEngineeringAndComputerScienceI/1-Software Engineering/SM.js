@@ -4,7 +4,11 @@ class SM {
     this.startState = initialValue // 记住初始值
     this.state = 0
     this.input = 0   // input output 不一定需要
+<<<<<<< HEAD
     this.output = 0 
+=======
+    this.output = 0
+>>>>>>> 31af18abdd67409776fad02b8112503aa370eba9
     this.indent = 0  // log 部分
   }
   // 启动方法 startState 赋值给 state
@@ -28,17 +32,31 @@ class SM {
     if (verbose) {
       console.log(`StartState: ${this.state}`)
       let n = inputs.length
+<<<<<<< HEAD
       for(let i=0; i < n; i++){
+=======
+      for (let i = 0; i < n; i++) {
+>>>>>>> 31af18abdd67409776fad02b8112503aa370eba9
         console.log("Step: ", i)
         // console.log(" ",  this.constructor.name)
         this.step(inputs[i], verbose)
       }
     } else {
+<<<<<<< HEAD
       let outputs = inputs.map(input => this.step(input))
 
       return outputs
     }
     
+=======
+      let outputs = []
+      for (let input in inputs) {
+        outputs.push(this.step(input))
+      }
+      return outputs
+    }
+
+>>>>>>> 31af18abdd67409776fad02b8112503aa370eba9
   }
   // 无输入状态机调用run, n为次数
   run(n = 10, verbose = false) {
@@ -48,11 +66,19 @@ class SM {
     const nextState = this.getNextState(state, input)
     return { state: nextState, output: nextState }
   }
+<<<<<<< HEAD
   debug(indent = 0){
     this.indent = indent
     console.log(`${this.indent + " "+ this.constructor.name} In: ${this.input} Out: ${this.output} Next State: ${this.state}`)
   }
   done(){
+=======
+  debug(indent = 0) {
+    this.indent = indent
+    console.log(`${this.indent + " " + this.constructor.name} In: ${this.input} Out: ${this.output} Next State: ${this.state}`)
+  }
+  done() {
+>>>>>>> 31af18abdd67409776fad02b8112503aa370eba9
     return false
   }
 }
@@ -110,7 +136,7 @@ class Cascade extends SM {
     this.sm1 = sm1
     this.sm2 = sm2
   }
-  start(){
+  start() {
     super.start()
     this.sm1.start()
     this.sm2.start()
