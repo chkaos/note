@@ -155,6 +155,110 @@ func merge2(left, right []int, compare func(int, int) bool) []int {
 	return newArr
 }
 
+// 快速排序
+// 快速排序使用分治法（Divide and conquer）策略来把一个序列（list）分为较小和较大的2个子序列，然后递归地排序两个子序列。
+
+// 步骤为：
+
+// 挑选基准值：从数列中挑出一个元素，称为“基准”（pivot），
+// 分割：重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面（与基准值相等的数可以到任何一边）。在这个分割结束之后，对基准值的排序就已经完成，
+// 递归排序子序列：递归地将小于基准值元素的子序列和大于基准值元素的子序列排序。
+// 递归到最底部的判断条件是数列的大小是零或一，此时该数列显然已经有序。
+
+// 选取基准值有数种具体方法，此选取方法对排序的时间性能有决定性影响。
+
+// Worst-case performance	O(n2)
+// Best-case performance	O(n log n) (simple partition)
+// or O(n) (three-way partition and equal keys)
+// Average performance	O(n log n)
+// Worst-case space complexity	O(n) auxiliary (naive)
+// O(log n) auxiliary (Hoare 1962)
+func quickSort(L []int) (result []int) {
+	var n = len(L)
+
+	if n <= 1 {
+		return L
+	}
+
+	var less, greater []int
+
+	pivot := L[0]
+
+	for i := 1; i < n; i++ {
+		if L[i] < pivot {
+			less = append(less, L[i])
+		} else if L[i] >= pivot {
+			greater = append(greater, L[i])
+		}
+	}
+
+	return append(append(quickSort(less), pivot), quickSort(greater)...)
+
+}
+
+// 上面简单版本的缺点是，它需要{\displaystyle \Omega (n)}{\displaystyle \Omega (n)}的额外存储空间，也就跟归并排序一样不好。额外需要的存储器空间配置，在实际上的实现，也会极度影响速度和缓存的性能。有一个比较复杂使用原地（in-place）分割算法的版本，且在好的基准选择上，平均可以达到{\displaystyle O(\log n)}{\displaystyle O(\log n)}空间的使用复杂度。
+
+// 且选择最左边的元素作为基准值会使已排过序的数组产生worst-case behavior this causes worst-case behavior on already sorted arrays
+// Choosing a random pivot minimizes the chance that you will encounter worst-case O(n2) performance (always choosing first or last would cause worst-case performance for nearly-sorted or nearly-reverse-sorted data). Choosing the middle element would also be acceptable in the majority of cases.
+// in-place version
+
+func quickSort2(L []int, low, high int) {
+	var n = len(L)
+
+	if n <= 1 {
+		return
+	}
+
+	if low >= high {
+		return
+	}
+
+	pivot := getPivot(L, low, high)
+
+	left, right := partition(L, pivot, low, high)
+
+	quickSort2(L, low, left-1)
+	quickSort2(L, right+1, high)
+
+}
+
+func getPivot(L []int, low, high int) int {
+	mid := low + (high-low)/2
+	// 用low + (high - low) / 2 不用 (low + high) / 2是为了减少整数溢出的情况
+	// return mid // 中数版本
+	// median-of-3 method for Lomuto partition
+	// The ninther, which is the "median of three medians of three" is even better for very large n.
+	if L[mid] < L[low] {
+		swap(L, mid, low)
+	}
+	if L[high] < L[low] {
+		swap(L, high, low)
+	}
+	if L[high] < L[mid] {
+		swap(L, mid, high)
+	}
+	return L[high]
+}
+
+func partition(L []int, pivot, low, high int) (left, right int) {
+	left = low
+	right = high
+
+	for i := low; i < high; i++ {
+		for left >= right {
+			if L[i] < pivot {
+				swap()
+				left++
+			} else if L[i] >= pivot {
+				swap()
+				right--
+			}
+		}
+	}
+
+	return
+}
+
 func main() {
 	bool := binarySearch(3, []int{1, 2, 3, 4, 5, 7})
 	fmt.Println(bool)
@@ -171,4 +275,6 @@ func main() {
 	// }
 	arr := mergeSort2(conf)
 	fmt.Println(arr)
+	arr2 := []int{1, 2, 3, 4, 5, 7}
+	quickSort2(arr2, 0, len(arr2)-1)
 }
