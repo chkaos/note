@@ -5,6 +5,10 @@ import (
 	"math"
 )
 
+func swap(a []int, i, j int) {
+	a[i], a[j] = a[j], a[i]
+}
+
 func linearSearch(target int, array []int) bool {
 	for _, item := range array {
 		if item == target {
@@ -26,17 +30,22 @@ func linearSearchOnSortedList(target int, sortedList []int) bool {
 	return false
 }
 
-// 二分查找
-func binarySearch(e int, L []int) bool {
-
-	if len(L) == 0 {
+// 二分查找返回最接近的元素index
+func binarySearch(e int, L []int) (found bool) {
+	n := len(L)
+	if n == 0 {
 		return false
-	} else {
-		return binaryHelper(e, L, 0, len(L)-1)
 	}
+
+	if L[n-1] < e {
+		return false
+	}
+
+	return binaryHelper(e, L, 0, len(L)-1)
+
 }
 
-func binaryHelper(e int, L []int, low, high int) bool {
+func binaryHelper(e int, L []int, low, high int) (found bool) {
 	if high == low {
 		return L[high] == e
 	}
@@ -54,6 +63,57 @@ func binaryHelper(e int, L []int, low, high int) bool {
 	}
 }
 
+func searchInsert(nums []int, target int) int {
+	l, r := 0, len(nums)-1
+	for l <= r {
+		mid := l + (r-l)/2
+		if nums[mid] < target {
+			l = mid + 1
+		} else if nums[mid] > target {
+			r = mid - 1
+		} else {
+			return mid
+		}
+	}
+	return l
+}
+
+// 冒泡排序
+func bubbleSort(L []int) {
+	var n = len(L)
+	for i := 0; i < n; i++ {
+		for j := 0; j < n-1-i; j++ {
+			if L[j] > L[j+1] {
+				swap(L, j, j+1)
+			}
+		}
+	}
+}
+
+func bubbleSort2(L []int) []int {
+	start := 0
+	end := len(L) - 1
+	for start < end {
+		var startPos, endPos int
+		for i := start; i < end; i++ {
+			if L[i] > L[i+1] {
+				endPos := i
+				swap(L, i, i+1)
+			}
+		}
+
+		for j := end; j < end; j-- {
+			if L[j] > L[j-1] {
+				startPos := j
+				swap(L, j, j-1)
+			}
+		}
+
+		start := startPos
+	}
+	return L
+}
+
 // 选择排序
 func selectionSort(L []int) {
 	var n = len(L)
@@ -64,7 +124,34 @@ func selectionSort(L []int) {
 				minIdx = j
 			}
 		}
-		L[i], L[minIdx] = L[minIdx], L[i]
+		swap(L, i, minIdx)
+	}
+}
+
+// 插入排序
+func insertionSort(L []int) {
+	var n = len(L)
+	for i := 1; i < n; i++ {
+		j := i
+		for j > 0 {
+			if L[j-1] > L[j] {
+				swap(L, j-1, j)
+			}
+			j = j - 1
+		}
+	}
+}
+
+// 插入排序2
+func insertionSort2(L []int) {
+	var n = len(L)
+	for i := 1; i < n; i++ {
+		j := i
+		insertIndex := searchInsert(L[:j], L[i])
+		for j > insertIndex {
+			swap(L, j-1, j)
+			j = j - 1
+		}
 	}
 }
 
@@ -156,6 +243,7 @@ func merge2(left, right []int, compare func(int, int) bool) []int {
 }
 
 func main() {
+	input := []int{1, 2, 5, 7, 8, 2, 3}
 	bool := binarySearch(3, []int{1, 2, 3, 4, 5, 7})
 	fmt.Println(bool)
 
@@ -171,4 +259,7 @@ func main() {
 	// }
 	arr := mergeSort2(conf)
 	fmt.Println(arr)
+
+	insertionSort2(input)
+	fmt.Println(input)
 }
