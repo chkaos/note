@@ -5,6 +5,10 @@ import (
 	"math"
 )
 
+func swap(a []int, i, j int) {
+	a[i], a[j] = a[j], a[i]
+}
+
 func linearSearch(target int, array []int) bool {
 	for _, item := range array {
 		if item == target {
@@ -26,17 +30,22 @@ func linearSearchOnSortedList(target int, sortedList []int) bool {
 	return false
 }
 
-// 二分查找
-func binarySearch(e int, L []int) bool {
-
-	if len(L) == 0 {
+// 二分查找返回最接近的元素index
+func binarySearch(e int, L []int) (found bool) {
+	n := len(L)
+	if n == 0 {
 		return false
-	} else {
-		return binaryHelper(e, L, 0, len(L)-1)
 	}
+
+	if L[n-1] < e {
+		return false
+	}
+
+	return binaryHelper(e, L, 0, len(L)-1)
+
 }
 
-func binaryHelper(e int, L []int, low, high int) bool {
+func binaryHelper(e int, L []int, low, high int) (found bool) {
 	if high == low {
 		return L[high] == e
 	}
@@ -54,6 +63,59 @@ func binaryHelper(e int, L []int, low, high int) bool {
 	}
 }
 
+func searchInsert(nums []int, target int) int {
+	l, r := 0, len(nums)-1
+	for l <= r {
+		mid := l + (r-l)/2
+		if nums[mid] < target {
+			l = mid + 1
+		} else if nums[mid] > target {
+			r = mid - 1
+		} else {
+			return mid
+		}
+	}
+	return l
+}
+
+// 冒泡排序
+func bubbleSort(L []int) {
+	var n = len(L)
+	for i := 0; i < n; i++ {
+		for j := 0; j < n-1-i; j++ {
+			if L[j] > L[j+1] {
+				swap(L, j, j+1)
+			}
+		}
+	}
+}
+
+func bubbleSort2(L []int) []int {
+	start := 0
+	end := len(L) - 1
+	for start < end {
+		var startPos, endPos int
+		for i := start; i < end; i++ {
+			if L[i] > L[i+1] {
+				endPos = i
+				swap(L, i, i+1)
+			}
+		}
+
+		end = endPos
+
+		for j := end; j < end; j-- {
+			if L[j] > L[j-1] {
+				startPos = j
+				swap(L, j, j-1)
+			}
+		}
+
+		start = startPos
+	}
+	return L
+}
+
 // 选择排序
 func selectionSort(L []int) {
 	var n = len(L)
@@ -64,7 +126,34 @@ func selectionSort(L []int) {
 				minIdx = j
 			}
 		}
-		L[i], L[minIdx] = L[minIdx], L[i]
+		swap(L, i, minIdx)
+	}
+}
+
+// 插入排序
+func insertionSort(L []int) {
+	var n = len(L)
+	for i := 1; i < n; i++ {
+		j := i
+		for j > 0 {
+			if L[j-1] > L[j] {
+				swap(L, j-1, j)
+			}
+			j = j - 1
+		}
+	}
+}
+
+// 插入排序2
+func insertionSort2(L []int) {
+	var n = len(L)
+	for i := 1; i < n; i++ {
+		j := i
+		insertIndex := searchInsert(L[:j], L[i])
+		for j > insertIndex {
+			swap(L, j-1, j)
+			j = j - 1
+		}
 	}
 }
 
@@ -105,7 +194,7 @@ func merge(left, right []int) (result []int) {
 
 type MergeConf struct {
 	L       []int
-	Compare func(int, int) bool
+	Compare func(x, y int) bool
 }
 
 func mergeSort2(conf MergeConf) []int {
@@ -118,15 +207,14 @@ func mergeSort2(conf MergeConf) []int {
 			return a > b
 		}
 	}
-	//递[归]
+	//递归
 	middle := len(conf.L) / 2
 	//不断地进行左右对半划分
 	leftConf := MergeConf{L: conf.L[:middle], Compare: conf.Compare}
 	rightConf := MergeConf{L: conf.L[middle:], Compare: conf.Compare}
-	left := mergeSort2(leftConf)
-	right := mergeSort2(rightConf)
-	//合[并]
-	return merge2(left, right, conf.Compare)
+
+	//合并
+	return merge2(mergeSort2(leftConf), mergeSort2(rightConf), conf.Compare)
 }
 
 func merge2(left, right []int, compare func(int, int) bool) []int {
@@ -156,14 +244,6 @@ func merge2(left, right []int, compare func(int, int) bool) []int {
 }
 
 // 快速排序
-// 快速排序使用分治法（Divide and conquer）策略来把一个序列（list）分为较小和较大的2个子序列，然后递归地排序两个子序列。
-
-// 步骤为：
-
-// 挑选基准值：从数列中挑出一个元素，称为“基准”（pivot），
-// 分割：重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面（与基准值相等的数可以到任何一边）。在这个分割结束之后，对基准值的排序就已经完成，
-// 递归排序子序列：递归地将小于基准值元素的子序列和大于基准值元素的子序列排序。
-// 递归到最底部的判断条件是数列的大小是零或一，此时该数列显然已经有序。
 
 // 选取基准值有数种具体方法，此选取方法对排序的时间性能有决定性影响。
 
@@ -202,23 +282,16 @@ func quickSort(L []int) (result []int) {
 // Choosing a random pivot minimizes the chance that you will encounter worst-case O(n2) performance (always choosing first or last would cause worst-case performance for nearly-sorted or nearly-reverse-sorted data). Choosing the middle element would also be acceptable in the majority of cases.
 // in-place version
 
-func quickSort2(L []int, low, high int) {
-	var n = len(L)
+func quickSort2(L []int, left, right int) {
 
-	if n <= 1 {
+	if left >= right {
 		return
 	}
 
-	if low >= high {
-		return
-	}
+	pivotIndex := partition(L, left, right)
 
-	pivot := getPivot(L, low, high)
-
-	left, right := partition(L, pivot, low, high)
-
-	quickSort2(L, low, left-1)
-	quickSort2(L, right+1, high)
+	quickSort2(L, left, pivotIndex-1)
+	quickSort2(L, pivotIndex+1, right)
 
 }
 
@@ -237,44 +310,56 @@ func getPivot(L []int, low, high int) int {
 	if L[high] < L[mid] {
 		swap(L, mid, high)
 	}
-	return L[high]
+	return high
 }
 
-func partition(L []int, pivot, low, high int) (left, right int) {
-	left = low
-	right = high
+// 分段(todo 双指针版本)
+func partition(L []int, left, right int) (storeIndex int) {
+	pivotIndex := getPivot(L, left, right)
+	pivot := L[pivotIndex]
 
-	for i := low; i < high; i++ {
-		for left >= right {
-			if L[i] < pivot {
-				swap()
-				left++
-			} else if L[i] >= pivot {
-				swap()
-				right--
-			}
+	swap(L, pivotIndex, right) // 把pivot移到結尾
+
+	storeIndex = left
+	for i := left; i < right; i++ {
+
+		if L[i] <= pivot {
+			swap(L, storeIndex, i)
+			storeIndex++
 		}
 	}
+
+	swap(L, right, storeIndex) // 把pivot移到它最後的地方
 
 	return
 }
 
+func reverseFn(a, b int) bool {
+	return a < b
+}
+
 func main() {
+	input := []int{8, 1, 2, 5, 7, 8, 2, 3}
 	bool := binarySearch(3, []int{1, 2, 3, 4, 5, 7})
 	fmt.Println(bool)
 
+	// conf := MergeConf{
+	// 	L:       []int{1, 2, 5, 7, 8, 2, 3},
+	// 	Compare: nil,
+	// }
+
 	conf := MergeConf{
 		L:       []int{1, 2, 5, 7, 8, 2, 3},
-		Compare: nil,
+		Compare: reverseFn,
 	}
-	// conf := MergeConf{
-	// 	L: []int{1, 2, 5, 7, 8, 2, 3},
-	// 	Compare: func(a, b int) bool {
-	// 		return a < b
-	// 	},
-	// }
+
 	arr := mergeSort2(conf)
 	fmt.Println(arr)
-	arr2 := []int{1, 2, 3, 4, 5, 7}
+	arr2 := []int{1, 2, 8, 4, 5, 7, 2334, 56, 1, 34, 78, 3, 4}
+	// fmt.Println("quickSort1", quickSort(arr2))
 	quickSort2(arr2, 0, len(arr2)-1)
+	fmt.Println("quickSort2", arr2)
+
+	insertionSort2(input)
+	fmt.Println(input)
 }
