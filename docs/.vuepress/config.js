@@ -33,5 +33,12 @@ module.exports = {
                 limit: inlineLimit,
                 name: `assets/img/[name].[hash:8].[ext]`
             })
-    }
+    },
+    configureWebpack: {
+        resolve: {
+          alias: {
+            '@assets': './assets'
+          }
+        }
+      }
 }

@@ -43,7 +43,7 @@ func Init(h Interface) {
 	// heapify
 	n := h.Len()
 	for i := n/2 - 1; i >= 0; i-- {
-		down(h, i, n)
+		down(h, i, n) // 最小堆
 	}
 }
 

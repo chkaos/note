@@ -3,6 +3,10 @@
 ## 堆（英语：Heap）
 堆是计算机科学中的一种特别的完全二叉树。若是满足以下特性，即可称为堆：“给定堆中任意节点P和C，若P是C的母节点，那么P的值会小于等于（或大于等于）C的值”。若母节点的值恒小于等于子节点的值，此堆称为最小堆（min heap）；反之，若母节点的值恒大于等于子节点的值，此堆称为最大堆（max heap）。在堆中最顶端的那一个节点，称作根节点（root node），根节点本身没有母节点（parent node）。
 
+![heap]("~@assets/50/heap.png")
+
+堆的可视化为一颗完全二叉树。
+
 ~~~go
 
 // The Interface type describes the requirements
@@ -200,6 +204,96 @@ func main() {
 		item := heap.Pop(&pq).(*Item)
 		fmt.Printf("%.2d:%s ", item.priority, item.value)
 	}
+}
+~~~
+
+## 堆排序
+
+堆排序可以认为是选择排序的改进版，像选择排序一样将输入划分为已排序和待排序。
+
+不一样的是堆排序利用堆这种近似完全二叉树的良好的数据结构来实现排序，本质上使用了二分的思想。
+
+~~~go
+function heapSort(arr) {
+  const size = arr.length;
+
+  // 初始化 heap，i 从最后一个父节点开始调整，直到节点均调整完毕 
+  for (let i = Math.floor(size / 2) - 1; i >= 0; i--) {
+    heapify(i, size);
+  }
+  // 堆排序：先将第一个元素和已拍好元素前一位作交换，再重新调整，直到排序完毕
+  for (let i = size - 1; i > 0; i--) {
+    swap(arr, 0, i);
+    heapify(0, i);
+  }
+
+  return arr;
+}
+~~~
+
+~~~go
+func heapify(L []int, start, end int) {
+	// 建立父节点下标和子节点下标
+	dad := start
+	son := dad*2 + 1
+
+	// 超过数组长度 不存在子节点
+	if son >= end {
+		return
+	}
+
+	// 优先查看右节点
+	if son+1 < end && L[son] < L[son+1] {
+		son++
+	}
+
+	// 交换位置后 对交换的子节点进行相同 heapify 操作
+	if L[dad] <= L[son] {
+		swap(L, dad, son)
+		heapify(L, son, end)
+	}
+
+	return
+}
+~~~
+
+另外一种时利用官方的heap包, 可以快捷得到 heapSort, 需要额外空间。
+
+~~~go
+import (
+	"container/heap"
+	"fmt"
+)
+
+// An IntHeap is a min-heap of ints.
+type IntHeap []int
+
+func (h IntHeap) Len() int           { return len(h) }
+func (h IntHeap) Less(i, j int) bool { return h[i] < h[j] }
+func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+
+func (h *IntHeap) Push(x interface{}) {
+	// Push and Pop use pointer receivers because they modify the slice's length,
+	// not just its contents.
+	*h = append(*h, x.(int))
+}
+
+func (h *IntHeap) Pop() interface{} {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
+}
+
+func (h *IntHeap) heapSort2() (arr []int) {
+
+	heap.Init(h)
+	for h.Len() > 0 {
+		arr = append(arr, heap.Pop(h).(int))
+	}
+
+	return
 }
 ~~~
 

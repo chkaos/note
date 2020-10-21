@@ -338,6 +338,94 @@ func reverseFn(a, b int) bool {
 	return a < b
 }
 
+func heapSort(L []int) []int {
+	size := len(L)
+
+	// 初始化 heap，i 从最后一个父节点开始调整，直到节点均调整完毕
+	for i := (size / 2) - 1; i >= 0; i-- {
+		heapify(L, i, size)
+	}
+	// 堆排序：先将第一个元素和已拍好元素前一位作交换，再重新调整，直到排序完毕
+	for i := size - 1; i > 0; i-- {
+		swap(L, 0, i)
+		heapify(L, 0, i)
+	}
+
+	return L
+}
+
+func heapify(L []int, start, end int) {
+	// 建立父节点下标和子节点下标
+	dad := start
+	son := dad*2 + 1
+
+	// 超过数组长度 不存在子节点
+	if son >= end {
+		return
+	}
+
+	// 优先查看右节点
+	if son+1 < end && L[son] < L[son+1] {
+		son++
+	}
+
+	// 交换位置后 对交换的子节点进行相同 heapify 操作
+	if L[dad] <= L[son] {
+		swap(L, dad, son)
+		heapify(L, son, end)
+	}
+
+	return
+}
+
+// 希尔排序
+func shellSort(L []int) []int {
+	n := len(L)
+	if n < 2 {
+		return L
+	}
+	gap, step := findGap(n / 2)
+	for gap > 0 {
+		for i := gap; i < n; i++ {
+			j := i
+			for j >= gap && L[j] < L[j-gap] {
+				swap(L, j, j-gap)
+				j = j - gap
+			}
+		}
+		step--
+		gap = createGap(step)
+	}
+
+	return L
+}
+
+// 已数组长度查询最接近的增量序列 index
+func findGap(num int) (gap, step int) {
+	gap = 1
+
+	for gap < num {
+		step++
+		gap = createGap(step)
+	}
+
+	return
+
+}
+
+// 根据增量序列 index 返回 gap
+func createGap(n int) (gap int) {
+	if n < 0 {
+		return 0
+	}
+
+	if n == 1 {
+		return 1
+	}
+
+	return int(math.Pow(2, float64(n+2))*(math.Pow(2, float64(n+2))-3) + 1)
+}
+
 func main() {
 	input := []int{8, 1, 2, 5, 7, 8, 2, 3}
 	bool := binarySearch(3, []int{1, 2, 3, 4, 5, 7})
@@ -360,6 +448,10 @@ func main() {
 	quickSort2(arr2, 0, len(arr2)-1)
 	fmt.Println("quickSort2", arr2)
 
-	insertionSort2(input)
-	fmt.Println(input)
+	insertionSort(input)
+	fmt.Println("insertionSort", input)
+
+	arr3 := []int{1, 2, 8, 4, 5, 7, 2334, 56, 1, 34, 78, 3, 4, 8, 34, 67}
+	shellSort(arr3)
+	fmt.Println("shellSort", arr3)
 }
