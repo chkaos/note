@@ -168,7 +168,7 @@ func (bst *BinarySearchTree) Insert(key int) {
 	}
 }
 
-// 节点插入成功后一直查询父节点更新 值
+// 节点插入成功后一直查询父节点更新值
 func insertNode(node, newNode *Node) {
 	if newNode.key < node.key {
 		if node.left == nil {
