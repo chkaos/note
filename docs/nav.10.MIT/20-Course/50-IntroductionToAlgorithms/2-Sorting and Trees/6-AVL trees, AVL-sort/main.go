@@ -27,7 +27,7 @@ func NewNode(key int, parent, left, right *Node) Node {
 
 func getHeight(left, right *Node) int {
 
-	var leftHeight, rightHeight int
+	leftHeight, rightHeight := -1, -1
 	if left != nil {
 		leftHeight = left.height
 	}
