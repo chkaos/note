@@ -139,3 +139,6 @@ func BucketSort(arr []int) []int {
     return arr
 }
 ~~~
+
+怎么称一个排序算法是"稳定?
+相同输入值的顺序, 输出的时候他们之间顺位不会改变.
