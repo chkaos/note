@@ -45,6 +45,11 @@ Less obvious, using hashing techniques:
 worse case O(n)
 2. open addressing
 
+Open Addressing: better cache performance (better memory usage, no pointers
+needed)
+Chaining: less sensitive to hash functions (OA requires extra care to avoid clustering)
+and the load factor α (OA degrades past 70% or so and in any event cannot support values larger than 1)
+
 ### Simple uniform hashing 假想推测(实际上是错误的, 只用来做推导 略)
 
 ### Hash Functions
@@ -75,3 +80,5 @@ and p is a large prime (> |U|).
 This implies that for worst case keys k1 = k2, (and for a, b choice of h):
 1
 P ra,b{event Xk1k2} = P ra,b{h(k1) = h(k2)} = 1/m
+
+理论上链总长度为 n/m
