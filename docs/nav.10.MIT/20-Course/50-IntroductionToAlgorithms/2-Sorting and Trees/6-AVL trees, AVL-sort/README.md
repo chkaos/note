@@ -1,4 +1,7 @@
+# 6-AVL trees, AVL-sort
+
 ## AVL TREE
+
 AVL树是最早被发明的自平衡二叉查找树. 任一节点对应的两棵子树的最大高度差为1，因此它也被称为高度平衡树。由于树特征定义，我们可以计算出其高度 h 的上界 h<=1.44log(n)，也就是最坏情况下，树的高度约等于 1.44log(n).
 
 简单理解平衡树的定义是树的高度h为logN, 而极度不平衡的树可以看为路径(length of longest path going down to leaf)

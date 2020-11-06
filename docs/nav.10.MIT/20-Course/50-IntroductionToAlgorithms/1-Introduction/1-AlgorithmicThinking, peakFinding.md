@@ -1,3 +1,5 @@
+# 1 Algorithmic thinking, peak Finding
+
 ## Peak Finding
 
 #### One dimensional peak finder

@@ -1,5 +1,3 @@
-# 6.02 Introduction to EECS II: Digital Communication Systems
-
 ## 课程目标和介绍
 
 An introduction to several fundamental ideas in electrical engineering and computer science, using digital communication systems as the vehicle. The three parts of the course—bits, signals, and packets—cover three corresponding layers of abstraction relevant to the system:

@@ -1,4 +1,6 @@
-# 散列 Hashing(哈希)
+# 8-Hashing With Chaining
+
+### 散列 Hashing(哈希)
 散列是重要的数据结构，其设计为使用称为散列函数的特殊函数，该函数用于使用特定键映射给定值，以更快地访问元素。映射的效率取决于所使用的哈希函数的效率。
 
 Hashing: set of items each with a key

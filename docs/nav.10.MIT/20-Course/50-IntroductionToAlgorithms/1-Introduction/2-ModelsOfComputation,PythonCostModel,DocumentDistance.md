@@ -1,3 +1,5 @@
+# 2 Models Of Computation, PythonCostModel, DocumentDistance
+
 ## 什么是算法
 - Mathematical abstraction of computer program
 - Computational procedure to solve a problem

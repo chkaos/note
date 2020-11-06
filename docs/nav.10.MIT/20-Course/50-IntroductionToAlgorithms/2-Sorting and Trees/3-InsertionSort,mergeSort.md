@@ -1,3 +1,5 @@
+# 3 Insertion sort, merge sort
+
 ## why sorting?
 - 音乐库，通讯录有排序需求
 - 查找中位数，近似数, 查重，二分查找, 识别统计异常值等操作排过序的输入会快很多
