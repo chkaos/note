@@ -1,4 +1,4 @@
-# 3 Insertion sort, merge sort
+# 3 Insertion Sort, Merge Sort
 
 ## why sorting?
 - 音乐库，通讯录有排序需求

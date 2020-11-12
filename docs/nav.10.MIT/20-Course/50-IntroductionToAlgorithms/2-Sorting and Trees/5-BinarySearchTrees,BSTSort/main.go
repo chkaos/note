@@ -1,30 +1,29 @@
 package main
 
-
 import "sync"
 
 type Node struct {
-  key   int
-  parent *Node
-	left  *Node
-  right *Node
-  count int // 新增计数
+	key    int
+	parent *Node
+	left   *Node
+	right  *Node
+	count  int // 新增计数
 }
 
 func NewNode(key int, parent, left, right *Node) Node {
-  return Node{
-    key: key,
-    parent: parent,
-    left: left,
-    right: right,
-    count: 1,
-  }
+	return Node{
+		key:    key,
+		parent: parent,
+		left:   left,
+		right:  right,
+		count:  1,
+	}
 }
 
 // BinarySearchTree the binary search tree of Items
 type BinarySearchTree struct {
-    root *Node
-    lock sync.RWMutex
+	root *Node
+	lock sync.RWMutex
 }
 
 // Insert inserts the Int t in the tree
@@ -43,17 +42,17 @@ func (bst *BinarySearchTree) Insert(key int) {
 func insertNode(node, newNode *Node) {
 	if newNode.key < node.key {
 		if node.left == nil {
-      node.left = newNode
-      newNode.parent = node
-      updateCount(newNode)
+			node.left = newNode
+			newNode.parent = node
+			updateCount(newNode)
 		} else {
 			insertNode(node.left, newNode)
 		}
 	} else {
 		if node.right == nil {
-      node.right = newNode
-      newNode.parent = node
-      updateCount(newNode)
+			node.right = newNode
+			newNode.parent = node
+			updateCount(newNode)
 		} else {
 			insertNode(node.right, newNode)
 		}
@@ -85,8 +84,8 @@ func find(n *Node, key int) bool {
 func (bst *BinarySearchTree) FindMin() (value int) {
 	bst.lock.RLock()
 	defer bst.lock.RUnlock()
-  n := bst.root
-  node := minimum(n)
+	n := bst.root
+	node := minimum(n)
 	return node.key
 }
 
@@ -104,50 +103,50 @@ func minimum(n *Node) *Node {
 
 func (bst *BinarySearchTree) FindLarger(x *Node) *Node {
 	bst.lock.RLock()
-  defer bst.lock.RUnlock()
-  // 如果节点右子节点不为nil, 直接以右子节为起点查找最小值直接返回
+	defer bst.lock.RUnlock()
+	// 如果节点右子节点不为nil, 直接以右子节为起点查找最小值直接返回
 	if x.right != nil {
 		return minimum(x.right)
-  }
+	}
 
-  y := x.parent
+	y := x.parent
 
 	for {
-		if y != nil && y.right == x{
-      x = y
-      y = y.parent
+		if y != nil && y.right == x {
+			x = y
+			y = y.parent
 		}
-  }
-  
-  return y
+	}
+
+	return y
 }
 
 func updateCount(node *Node) {
-  parent := node.parent
-  for parent != nil {
-      parent.count += 1
-      parent = parent.parent
-  }
+	parent := node.parent
+	for parent != nil {
+		parent.count += 1
+		parent = parent.parent
+	}
 }
 
 // 中序遍历
-func inOrderTraversalIterate(root *TreeNode) (res []int) {
+func inOrderTraversalIterate(root *Node) (res []int) {
 
-	stack := []*TreeNode{}
+	stack := []*Node{}
 
 	for len(stack) > 0 || root != nil {
-		if(root != nil) {
+		if root != nil {
 			stack = append(stack, root)
-			root = root.Left
+			root = root.left
 		} else {
-			root = stack[len(stack) - 1]
-			stack = stack[0:len(stack) - 1]
-			res = append(res, root.Val)
-			root = root.Right
+			root = stack[len(stack)-1]
+			stack = stack[0 : len(stack)-1]
+			res = append(res, root.key)
+			root = root.right
 		}
 	}
 
 	return
 }
 
-func main(){}
+func main() {}
