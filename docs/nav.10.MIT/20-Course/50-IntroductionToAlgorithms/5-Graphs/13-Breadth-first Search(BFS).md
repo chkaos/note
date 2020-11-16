@@ -25,7 +25,68 @@ graph G=(Vertices, Edges) 一个图由点和边构成
 n*n*n 的魔方 时间复杂度在O(n^2/lg n)
 
 ### 图数据结构
-- 邻接表 (Adjacency list)
-- 隐式图
+- 邻接表 (Adjacency list) 一个链表数组 O(V+E)
+- 隐式图 (Incidence Lists)
+  - 节点是对象, 将edges储存到节点上
 
 ### Breadth-First Search
+- 在O(V+E)时间内访问所有节点
+
+代码是 Incidence Lists 版本实现
+~~~go
+// Graph : represents a Graph
+type Graph struct {
+	nodes []*GraphNode
+}
+
+// GraphNode : represents a Graph node
+type GraphNode struct {
+	id    int
+	edges map[int]int
+}
+
+// New : returns a new instance of a Graph
+func New() *Graph {
+	return &Graph{
+		nodes: []*GraphNode{},
+	}
+}
+
+// FindNode 寻找节点
+func (g *Graph) FindNode(id int) *GraphNode {
+	for i := 0; i < len(g.nodes); i++ {
+		if g.nodes[i].id == id {
+			return g.nodes[i]
+		}
+	}
+	return nil
+}
+
+// BFS 广度优先
+func (g *Graph) BFS() {
+	root := g.nodes[0]
+	visited := make(map[int]int)
+	level := 1
+	visited[root.id] = 0
+
+	frontier := []*GraphNode{root}
+	for len(frontier) > 0 {
+		next := []*GraphNode{}
+		for i := 0; i < len(frontier); i++ {
+			edges := frontier[i].edges
+			for k := range edges {
+				_, ok := visited[k]
+				if !ok {
+					visited[k] = level
+					next = append(next, g.FindNode(k))
+				}
+			}
+		}
+		frontier = next
+		level++
+	}
+}
+~~~
+
+### 最短路径问题
+In graph theory, the shortest path problem is the problem of finding a path between two vertices (or nodes) in a graph such that the sum of the weights of its constituent edges is minimized.
