@@ -50,7 +50,7 @@ func (g *Graph) DFS() {
 如果存在 backward edge, 则存在至少一个循环
 
 ### 任务调度
-Given Directed Acylic Graph (DAG), where vertices represent tasks & edges represent dependencies, order tasks without violating dependencies
+Given Directed Acylic Graph (DAG, 有向无环图), where vertices represent tasks & edges represent dependencies, order tasks without violating dependencies
 
 lower order to higher order
 

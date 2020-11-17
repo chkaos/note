@@ -90,3 +90,9 @@ func (g *Graph) BFS() {
 
 ### 最短路径问题
 In graph theory, the shortest path problem is the problem of finding a path between two vertices (or nodes) in a graph such that the sum of the weights of its constituent edges is minimized.
+
+connected graph: 有一条路径通过任意节点
+
+connected component(元件): 在图论中，元件又称为连通元件、分量、或分支，是一个无向子图，在元件中的任何两个顶点都可以经由该图上的边抵达另一个顶点，且没有任何一边可以连到其他子图的顶点。没有与任何其他顶点相连的单一顶点也可以算是一个元件。
+
+有向图里的 Out-Degrees and In-Degrees of a Vertex, Out-Degrees 为以此节点为起点的边的数目, In-Degrees 为以此节点为终点的边的数目, 
