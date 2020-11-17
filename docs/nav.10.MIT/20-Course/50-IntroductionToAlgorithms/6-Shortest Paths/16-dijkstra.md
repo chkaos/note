@@ -1,3 +1,12 @@
+# 16. dijkstra
+
+### relaxlation 最短路径搜寻算法里的松弛化
+
+松弛化是唯一的操作， 节点选择顺序不影响
+
+贪心算法（英語：greedy algorithm），又称贪婪算法，是一种在每一步选择中都采取在当前状态下最好或最优（即最有利）的选择，从而希望导致结果是最好或最优的算法。
+
+```go
 // https://github.com/jonatasbaldin/grokking-algorithms-golang/blob/master/ch7/dijkstra.go
 package main
 
@@ -23,58 +32,6 @@ type Node struct {
 }
 
 const Infinity = int(^uint(0) >> 1)
-
-// AddEdge adds an Edge to the Graph
-func (g *Graph) AddEdge(parent, child *Node, cost int) {
-	edge := &Edge{
-		Parent: parent,
-		Child:  child,
-		Cost:   cost,
-	}
-
-	g.Edges = append(g.Edges, edge)
-	g.AddNode(parent)
-	g.AddNode(child)
-}
-
-// AddNode adds a Node to the Graph list of Nodes, if the the node wasn't already added
-// g.Nodes is a map for better caching reasons (https://www.reddit.com/r/golang/comments/diptj9/implementing_dijkstra_algorithm_in_go/f3xcffh?utm_source=share&utm_medium=web2x)
-func (g *Graph) AddNode(node *Node) {
-	if g.Nodes == nil {
-		g.Nodes = make(map[*Node]bool)
-	}
-
-	_, ok := g.Nodes[node]
-	if !ok {
-		g.Nodes[node] = true
-	}
-}
-
-// String returns a string representation of the Graph
-func (g *Graph) String() string {
-	var s string
-
-	s += "Edges:\n"
-	for _, edge := range g.Edges {
-		s += edge.Parent.Name + " -> " + edge.Child.Name + " = " + strconv.Itoa(edge.Cost)
-		s += "\n"
-	}
-	s += "\n"
-
-	s += "Nodes: "
-	i := 0
-	for node, _ := range g.Nodes {
-		if i == len(g.Nodes)-1 {
-			s += node.Name
-		} else {
-			s += node.Name + ", "
-		}
-		i++
-	}
-	s += "\n"
-
-	return s
-}
 
 // Dijkstra implements THE Dijkstra algorithm
 // Returns the shortest path from startNode to all the other Nodes
@@ -118,7 +75,6 @@ func (g *Graph) Dijkstra(startNode *Node) (costTable map[*Node]int) {
 
 				// Update the costTable for that neighbor
 				costTable[edge.Child] = distanceToNeighbor
-				// fmt.Println(*edge.Child)
 			}
 		}
 	}
@@ -154,8 +110,6 @@ func (g *Graph) GetNodeEdges(node *Node) (edges []*Edge) {
 	return edges
 }
 
-// getClosestNonVisitedNode returns the closest Node (with the lower cost) from the costTable
-// **if the node hasn't been visited yet**
 func getClosestNonVisitedNode(costTable map[*Node]int, visited []*Node) *Node {
 	type CostTableToSort struct {
 		Node *Node
@@ -184,47 +138,12 @@ func getClosestNonVisitedNode(costTable map[*Node]int, visited []*Node) *Node {
 	// 这里还可以用斐波那契堆来实现
 	// excat-min O（lgV）
 	// decrease key O（1） 平摊时间复杂度
-	// O（VlgV + E）
-
-	// We need the Node with the lower cost from the costTable
-	// So it's important to sort it
-	// Here I'm using an anonymous struct to make it easier to sort a map
+  // O（VlgV + E）
+  
 	sort.Slice(sorted, func(i, j int) bool {
 		return sorted[i].Cost < sorted[j].Cost
 	})
 
 	return sorted[0].Node
 }
-
-func main() {
-	a := &Node{Name: "a"}
-	b := &Node{Name: "b"}
-	c := &Node{Name: "c"}
-	d := &Node{Name: "d"}
-	e := &Node{Name: "e"}
-	f := &Node{Name: "f"}
-	g := &Node{Name: "g"}
-
-	graph := Graph{}
-	graph.AddEdge(a, c, 2)
-	graph.AddEdge(a, b, 5)
-	graph.AddEdge(c, b, 1)
-	graph.AddEdge(c, d, 9)
-	graph.AddEdge(b, d, 4)
-	graph.AddEdge(d, e, 2)
-	graph.AddEdge(d, g, 30)
-	graph.AddEdge(d, f, 10)
-	graph.AddEdge(f, g, 1)
-
-	fmt.Println(graph.String())
-
-	costTable := graph.Dijkstra(a)
-
-	// Make the costTable nice to read :)
-	for node, cost := range costTable {
-		fmt.Printf("Distance from %s to %s = %d\n", a.Name, node.Name, cost)
-	}
-
-	// Executes exercises from other file
-	// Exercises()
-}
+```
