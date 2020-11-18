@@ -3,6 +3,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"sort"
 	"strconv"
 )
@@ -22,7 +23,8 @@ type Node struct {
 	Name string
 }
 
-const Infinity = int(^uint(0) >> 1)
+const NegInfinity = int(^uint(0) >> 1)
+const PosInfinity = math.MaxInt64
 
 // AddEdge adds an Edge to the Graph
 func (g *Graph) AddEdge(parent, child *Node, cost int) {
@@ -88,7 +90,7 @@ func (g *Graph) Dijkstra(startNode *Node) (costTable map[*Node]int) {
 	//  B    Inf   // the distance to all the other Nodes are unknown, so we mark as Infinity
 	//  C    Inf
 	// ...
-	costTable = g.NewCostTable(startNode)
+	costTable = g.NewCostTable(startNode, "Dijkstra")
 
 	// An empty list of "visited" Nodes. Everytime the algorithm runs on a Node, we add it here
 	var visited []*Node
@@ -126,16 +128,59 @@ func (g *Graph) Dijkstra(startNode *Node) (costTable map[*Node]int) {
 	return costTable
 }
 
+// BellmanFord 实现, 时间复杂度O(VE)
+func (g *Graph) BellmanFord(startNode *Node) (costTable map[*Node]int) {
+
+	// First, we instantiate a "Cost Table", it will hold the information:
+	// "From startNode, what's is the cost to all the other Nodes?"
+	// When initialized, It looks like this:
+	// NODE  COST
+	//  A     0    // The startNode has always the lowest cost to itself, in this case, 0
+	//  B    POSInf   // the distance to all the other Nodes are unknown, so we mark as Infinity
+	//  C    POSInf
+	// ...
+	costTable = g.NewCostTable(startNode, "BellmanFord")
+
+	// An empty list of "visited" Nodes. Everytime the algorithm runs on a Node, we add it here
+	var visited []*Node
+
+	// A loop to visit all Nodes
+	for len(visited) != len(g.Nodes) {
+
+		// Get closest non visited Node (lower cost) from the costTable
+		node := getClosestNonVisitedNode(costTable, visited)
+
+		// Mark Node as visited
+		visited = append(visited, node)
+
+		// Get Node's Edges (its neighbors)
+		nodeEdges := g.GetNodeEdges(node)
+
+		for _, edge := range nodeEdges {
+
+			if costTable[edge.Parent] != PosInfinity && costTable[edge.Child] > costTable[edge.Parent]+edge.Cost {
+				costTable[edge.Child] = costTable[edge.Parent] + edge.Cost
+			}
+		}
+	}
+
+	return costTable
+}
+
 // NewCostTable returns an initialized cost table for the Dijkstra algorithm work with
 // by default, the lowest cost is assigned to the startNode – so the algorithm starts from there
 // all the other Nodes in the Graph receives the Infinity value
-func (g *Graph) NewCostTable(startNode *Node) map[*Node]int {
+func (g *Graph) NewCostTable(startNode *Node, method string) map[*Node]int {
 	costTable := make(map[*Node]int)
 	costTable[startNode] = 0
 
-	for node, _ := range g.Nodes {
+	for node := range g.Nodes {
 		if node != startNode {
-			costTable[node] = Infinity
+			if method == "Dijkstra" {
+				costTable[node] = NegInfinity
+			} else {
+				costTable[node] = PosInfinity
+			}
 		}
 	}
 
@@ -218,7 +263,8 @@ func main() {
 
 	fmt.Println(graph.String())
 
-	costTable := graph.Dijkstra(a)
+	// costTable := graph.Dijkstra(a)
+	costTable := graph.BellmanFord(a)
 
 	// Make the costTable nice to read :)
 	for node, cost := range costTable {
