@@ -13,10 +13,10 @@
 #### DRY - Don't Repeat Yourself
 
 #### 代码注释(好的注释应该使代码更易于理解，更易于避免错误)
-注释是给人看的, 格式上尽量往可阅读方向优化
+注释是给人看的, 格式上尽量往可阅读方向优化.
 
 #### Fail Fast 在编码过程中采取越早发现问题越好
-
+越早发现问题（越接近问题的起因），就越容易解决.
 #### 避免用奇怪数字做常量
 There are really only two constants that computer scientists recognize as valid in and of themselves: 0, 1, and maybe 2.
 

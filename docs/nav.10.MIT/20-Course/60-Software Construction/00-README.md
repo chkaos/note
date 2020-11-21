@@ -28,3 +28,5 @@ Participation	5%
 ### 跳过的章节
 2: Basic Java
 5: Version Control git git的核心数据结构是一个Object管理系统, 暂时不看了, 日常操作足矣
+10: Recursion 递归
+27: Team Version Control
