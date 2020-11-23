@@ -31,4 +31,6 @@ Participation	5%
 10: Recursion 递归
 16: Recursive Data Types 递归数据结构
 17: Regular Expressions and Grammars 正则表达式
+25: Map, Filter, Reduce
+26: Little Languages
 27: Team Version Control

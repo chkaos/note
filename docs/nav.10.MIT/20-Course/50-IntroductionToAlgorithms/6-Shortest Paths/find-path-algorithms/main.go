@@ -120,6 +120,7 @@ func (g *Graph) Dijkstra(startNode *Node) (costTable map[*Node]int) {
 
 				// Update the costTable for that neighbor
 				costTable[edge.Child] = distanceToNeighbor
+				// fmt.Println(*edge.Child)
 			}
 		}
 	}
@@ -220,6 +221,15 @@ func getClosestNonVisitedNode(costTable map[*Node]int, visited []*Node) *Node {
 			sorted = append(sorted, CostTableToSort{node, cost})
 		}
 	}
+
+	// todo 这里可以用min heap来替换
+	// excat-min O（lgV）
+	// decrease key O（lgV）
+	// O（VlgV + ElgE）
+	// 这里还可以用斐波那契堆来实现
+	// excat-min O（lgV）
+	// decrease key O（1） 平摊时间复杂度
+	// O（VlgV + E）
 
 	// We need the Node with the lower cost from the costTable
 	// So it's important to sort it
