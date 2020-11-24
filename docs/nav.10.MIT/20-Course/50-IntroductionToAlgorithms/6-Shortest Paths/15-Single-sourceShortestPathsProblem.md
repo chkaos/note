@@ -29,4 +29,4 @@ works on positive and negative, weight edges
 - 最短路径的子路径均是最短路径
 
 ### 解路径图的一种思路
-假如一个节点应该有2个状态， 映射出`two graphs with different states`.
+假如一个节点应该有2个状态， 映射出`two graphs with different states`. 
