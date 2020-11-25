@@ -1,4 +1,4 @@
-# charter 8 - Long-term decision-making and search
+# charter8 - Long-term decision-making and search
 
 ## 状态空间搜索
 

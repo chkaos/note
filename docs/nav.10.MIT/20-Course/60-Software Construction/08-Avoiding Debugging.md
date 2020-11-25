@@ -1,4 +1,4 @@
-# 08. Avoiding Debugging
+# 8. Avoiding Debugging
 
 ### 消除bug
 The best defense against bugs is to make them impossible by design.
