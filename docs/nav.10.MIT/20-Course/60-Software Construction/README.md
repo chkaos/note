@@ -1,4 +1,4 @@
-## 课程目标和介绍(软件构建)
+# 课程目标和介绍(软件构建)
 
 2020-11-01 前置课程6.01 或者 6.009(已学了6.01 且 6.009暂时找不到资源, 课表需调整)
 
@@ -18,17 +18,19 @@ https://web.mit.edu/6.005/www/fa16/general/
 
 ### 评分标准
 
-ACTIVITIES	PERCENTAGES
-Quizzes	30%
-Problem Sets	50%
-Project	10%
-Code Review	5%
-Participation	5%
+- ACTIVITIES	PERCENTAGES
+- Quizzes	30%
+- Problem Sets	50%
+- Project	10%
+- Code Review	5%
+- Participation	5%
 
 ### 跳过的章节
-2: Basic Java
-5: Version Control git git的核心数据结构是一个Object管理系统, 暂时不看了, 日常操作足矣
-10: Recursion 递归
-25: Map, Filter, Reduce
-26: Little Languages
-27: Team Version Control
+- 2: Basic Java
+- 5: Version Control git git的核心数据结构是一个Object管理系统, 暂时不看了, 日常操作足矣
+- 10: Recursion 递归
+- 16: Recursive Data Types 递归数据结构
+- 17: Regular Expressions and Grammars 正则表达式
+- 25: Map, Filter, Reduce
+- 26: Little Languages
+- 27: Team Version Control

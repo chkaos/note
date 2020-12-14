@@ -1,4 +1,4 @@
-# 09. Mutability & Immutability
+# 9. Mutability & Immutability
 
 ### 可变性
 Some objects are mutable : they have methods that change the value of the object.

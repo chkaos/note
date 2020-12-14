@@ -14,6 +14,6 @@ git add -A
 git commit -m "deploy $(date "+%Y-%m-%d %H:%M:%S")"
 
 # 如果发布到 https://<USERNAME>.github.io
-git push -f https://github.com/chkaos/note.git deploy
+git push -f https://github.com/chkaos/note.git master
 
 cd .

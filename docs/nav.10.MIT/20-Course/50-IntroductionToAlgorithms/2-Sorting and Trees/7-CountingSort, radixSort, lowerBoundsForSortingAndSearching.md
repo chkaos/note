@@ -44,7 +44,7 @@ console.log(arr.countSort())
 
 基数排序的时间复杂度是 O(k*n)，其中 n是排序元素个数，k是数字位数。注意这不是说这个时间复杂度一定优于 O(nlogn)，k的大小取决于数字位的选择（比如比特位数），和待排序数据所属数据类型的全集的大小； k 决定了进行多少轮处理，而 n是每轮处理的操作数目。
 
-![radix]("~@assets/50/radix.sort")
+![radix]("~@assets/50/radix.png")
 
 ~~~go
 //获取数组的最大值
