@@ -34,3 +34,5 @@ https://web.mit.edu/6.005/www/fa16/general/
 - 25: Map, Filter, Reduce
 - 26: Little Languages
 - 27: Team Version Control
+
+中文版链接: https://github.com/WangYihang/MIT-6.031-Readings-zh-cn
