@@ -25,6 +25,7 @@ jobs:
       uses: jenkey2011/vuepress-deploy@master
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        TARGET_REPO: chkaos/note
         TARGET_BRANCH: master
-        BUILD_SCRIPT: npm i && npm run deploy
+        BUILD_SCRIPT: yarn && yarn build
         BUILD_DIR: docs/.vuepress/dist/
