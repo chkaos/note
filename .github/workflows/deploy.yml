@@ -26,5 +26,5 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         TARGET_BRANCH: master
-        BUILD_SCRIPT: npm run deploy
+        BUILD_SCRIPT: npm i && npm run deploy
         BUILD_DIR: docs/.vuepress/dist/
