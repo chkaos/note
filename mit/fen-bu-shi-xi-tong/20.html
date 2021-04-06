@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>20.Atomicity: Two-Phase Commit | CHKAOS</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/note/egg.png">
+    <meta name="description" content="My Note Collection">
+    
+    <link rel="preload" href="/note/assets/css/0.styles.ba589cc9.css" as="style"><link rel="preload" href="/note/assets/js/app.d5006f3d.js" as="script"><link rel="preload" href="/note/assets/js/2.65e5b2f3.js" as="script"><link rel="preload" href="/note/assets/js/101.fd3e754f.js" as="script"><link rel="prefetch" href="/note/assets/js/10.ae2f2d04.js"><link rel="prefetch" href="/note/assets/js/100.c68d38be.js"><link rel="prefetch" href="/note/assets/js/102.5c217b08.js"><link rel="prefetch" href="/note/assets/js/103.449bcd79.js"><link rel="prefetch" href="/note/assets/js/104.1b5b375d.js"><link rel="prefetch" href="/note/assets/js/105.a61b2017.js"><link rel="prefetch" href="/note/assets/js/106.e81cfff0.js"><link rel="prefetch" href="/note/assets/js/107.a75923b3.js"><link rel="prefetch" href="/note/assets/js/108.891948b3.js"><link rel="prefetch" href="/note/assets/js/109.a2545875.js"><link rel="prefetch" href="/note/assets/js/11.4ab4a5a3.js"><link rel="prefetch" href="/note/assets/js/110.6d0886e8.js"><link rel="prefetch" href="/note/assets/js/12.255d9150.js"><link rel="prefetch" href="/note/assets/js/13.794e7ac8.js"><link rel="prefetch" href="/note/assets/js/14.d32c7fdd.js"><link rel="prefetch" href="/note/assets/js/15.67cfbf95.js"><link rel="prefetch" href="/note/assets/js/16.3c73a976.js"><link rel="prefetch" href="/note/assets/js/17.8806b699.js"><link rel="prefetch" href="/note/assets/js/18.378bd860.js"><link rel="prefetch" href="/note/assets/js/19.48c8434f.js"><link rel="prefetch" href="/note/assets/js/20.1fdb582e.js"><link rel="prefetch" href="/note/assets/js/21.3e08c9be.js"><link rel="prefetch" href="/note/assets/js/22.810fe1a0.js"><link rel="prefetch" href="/note/assets/js/23.5ba70e2d.js"><link rel="prefetch" href="/note/assets/js/24.9681b927.js"><link rel="prefetch" href="/note/assets/js/25.c0e5deaa.js"><link rel="prefetch" href="/note/assets/js/26.aae4bdc7.js"><link rel="prefetch" href="/note/assets/js/27.7f17e5f5.js"><link rel="prefetch" href="/note/assets/js/28.61ef96a0.js"><link rel="prefetch" href="/note/assets/js/29.f8d63307.js"><link rel="prefetch" href="/note/assets/js/3.031640f4.js"><link rel="prefetch" href="/note/assets/js/30.817d5cd9.js"><link rel="prefetch" href="/note/assets/js/31.e4ea696a.js"><link rel="prefetch" href="/note/assets/js/32.aba63c9c.js"><link rel="prefetch" href="/note/assets/js/33.1aa6facd.js"><link rel="prefetch" href="/note/assets/js/34.69d2bc3f.js"><link rel="prefetch" href="/note/assets/js/35.f82bd55f.js"><link rel="prefetch" href="/note/assets/js/36.20a42b33.js"><link rel="prefetch" href="/note/assets/js/37.7ab6c748.js"><link rel="prefetch" href="/note/assets/js/38.04cf7e1e.js"><link rel="prefetch" href="/note/assets/js/39.87ad9256.js"><link rel="prefetch" href="/note/assets/js/4.0876ef1d.js"><link rel="prefetch" href="/note/assets/js/40.fa12820d.js"><link rel="prefetch" href="/note/assets/js/41.22bd816e.js"><link rel="prefetch" href="/note/assets/js/42.c107915c.js"><link rel="prefetch" href="/note/assets/js/43.983b5fc5.js"><link rel="prefetch" href="/note/assets/js/44.75f6ceb2.js"><link rel="prefetch" href="/note/assets/js/45.98830da6.js"><link rel="prefetch" href="/note/assets/js/46.550f0b22.js"><link rel="prefetch" href="/note/assets/js/47.8fbd223c.js"><link rel="prefetch" href="/note/assets/js/48.edf4b3f9.js"><link rel="prefetch" href="/note/assets/js/49.7508a3de.js"><link rel="prefetch" href="/note/assets/js/5.369c3e08.js"><link rel="prefetch" href="/note/assets/js/50.04715961.js"><link rel="prefetch" href="/note/assets/js/51.277d9998.js"><link rel="prefetch" href="/note/assets/js/52.ebc26274.js"><link rel="prefetch" href="/note/assets/js/53.471c676f.js"><link rel="prefetch" href="/note/assets/js/54.9e46fdf4.js"><link rel="prefetch" href="/note/assets/js/55.8a98c441.js"><link rel="prefetch" href="/note/assets/js/56.b5f6e00a.js"><link rel="prefetch" href="/note/assets/js/57.f6fb0c39.js"><link rel="prefetch" href="/note/assets/js/58.d92a7b7d.js"><link rel="prefetch" href="/note/assets/js/59.33c88c84.js"><link rel="prefetch" href="/note/assets/js/6.34251819.js"><link rel="prefetch" href="/note/assets/js/60.68db27af.js"><link rel="prefetch" href="/note/assets/js/61.ce3eefe1.js"><link rel="prefetch" href="/note/assets/js/62.a3e76ed5.js"><link rel="prefetch" href="/note/assets/js/63.b9084887.js"><link rel="prefetch" href="/note/assets/js/64.e1d868ed.js"><link rel="prefetch" href="/note/assets/js/65.0d77e0a0.js"><link rel="prefetch" href="/note/assets/js/66.fe465e07.js"><link rel="prefetch" href="/note/assets/js/67.76ca73a0.js"><link rel="prefetch" href="/note/assets/js/68.2498dd7c.js"><link rel="prefetch" href="/note/assets/js/69.f03ab615.js"><link rel="prefetch" href="/note/assets/js/7.273a5831.js"><link rel="prefetch" href="/note/assets/js/70.cad85a7e.js"><link rel="prefetch" href="/note/assets/js/71.5dcb8b9a.js"><link rel="prefetch" href="/note/assets/js/72.827102a3.js"><link rel="prefetch" href="/note/assets/js/73.315b5fe4.js"><link rel="prefetch" href="/note/assets/js/74.def8de65.js"><link rel="prefetch" href="/note/assets/js/75.a54fced2.js"><link rel="prefetch" href="/note/assets/js/76.6cae1891.js"><link rel="prefetch" href="/note/assets/js/77.12cb32b9.js"><link rel="prefetch" href="/note/assets/js/78.5994be50.js"><link rel="prefetch" href="/note/assets/js/79.bbc37f01.js"><link rel="prefetch" href="/note/assets/js/8.ba3fa28e.js"><link rel="prefetch" href="/note/assets/js/80.eeb65418.js"><link rel="prefetch" href="/note/assets/js/81.f876286e.js"><link rel="prefetch" href="/note/assets/js/82.a58003e1.js"><link rel="prefetch" href="/note/assets/js/83.13c9c65b.js"><link rel="prefetch" href="/note/assets/js/84.dca226ee.js"><link rel="prefetch" href="/note/assets/js/85.38911042.js"><link rel="prefetch" href="/note/assets/js/86.4f2e3cde.js"><link rel="prefetch" href="/note/assets/js/87.bb576b86.js"><link rel="prefetch" href="/note/assets/js/88.ba3e1a83.js"><link rel="prefetch" href="/note/assets/js/89.cc281bcf.js"><link rel="prefetch" href="/note/assets/js/9.557b7160.js"><link rel="prefetch" href="/note/assets/js/90.b68af197.js"><link rel="prefetch" href="/note/assets/js/91.a0945e77.js"><link rel="prefetch" href="/note/assets/js/92.accc5e5d.js"><link rel="prefetch" href="/note/assets/js/93.682fd046.js"><link rel="prefetch" href="/note/assets/js/94.c47d39d0.js"><link rel="prefetch" href="/note/assets/js/95.6363826c.js"><link rel="prefetch" href="/note/assets/js/96.36edf40e.js"><link rel="prefetch" href="/note/assets/js/97.75b6c735.js"><link rel="prefetch" href="/note/assets/js/98.8b5d3421.js"><link rel="prefetch" href="/note/assets/js/99.e03485fe.js">
+    <link rel="stylesheet" href="/note/assets/css/0.styles.ba589cc9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note/" class="home-link router-link-active"><img src="/note/favicon.png" alt="CHKAOS" class="logo"> <span class="site-name can-hide">CHKAOS</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note/MIT/" class="nav-link">
+  Mit
+</a></div><div class="nav-item"><a href="/note/Leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/note/Interview/" class="nav-link">
+  Interview
+</a></div><div class="nav-item"><a href="http://chkaos.top" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/chkaos/note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note/MIT/" class="nav-link">
+  Mit
+</a></div><div class="nav-item"><a href="/note/Leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/note/Interview/" class="nav-link">
+  Interview
+</a></div><div class="nav-item"><a href="http://chkaos.top" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/chkaos/note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note/mit/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/note/mit/schedule.html" class="sidebar-link">计划</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机科学与编程导论(python)</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机科学数学</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>电子工程与计算机科学导论1</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>电子工程与计算机科学导论2(交流网络)</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法导论</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>软件构造</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>网络</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机网络导论</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>操作系统</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>分布式系统</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/note/mit/fen-bu-shi-xi-tong/" aria-current="page" class="sidebar-link">6.824 分布式系统</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/01.html" class="sidebar-link">Introduction</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/02.html" class="sidebar-link">2: Infrastructure: RPC and threads</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/03.html" class="sidebar-link">3.Fault Tolerance: primary/backup replication</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/04.html" class="sidebar-link">4.Fault Tolerance: FDS Case Study</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/05.html" class="sidebar-link">5: Fault Tolerance:Paxos</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/06.html" class="sidebar-link">6: Fault Tolerance:Raft</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/07.html" class="sidebar-link">7.Guest lecturer: Russ Cox (Google/Go)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/08.html" class="sidebar-link">8.Case Studies: Replicated File System -- Harp</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/09.html" class="sidebar-link">9. Distributed Computing: Sequential consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/10.html" class="sidebar-link">10.Distributed Computing: Relaxed consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/11.html" class="sidebar-link">11.Disconnected Operation: Version Vectors and File Synchronization</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/12.html" class="sidebar-link">13.Disconnected Operation: Eventual Consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/13.html" class="sidebar-link">13.MapReduce revisited</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/14.html" class="sidebar-link">14.Spark Case Study</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/15.html" class="sidebar-link">15.Guest lecturer: Wilson Hsieh (Google)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/16.html" class="sidebar-link">16.Scaling Memcache at Facebook</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/17.html" class="sidebar-link">17.Case Studies: Relaxed Consistency-PNUTS</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/18.html" class="sidebar-link">18. Case Studies:Dynamo</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/19.html" class="sidebar-link">19.Distributed systems in the real world (Guest lecturer: Emil Sit)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/20.html" aria-current="page" class="active sidebar-link">20.Atomicity: Two-Phase Commit</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/21.html" class="sidebar-link">21.Atomicity: Optimistic Concurrency Control</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/22.html" class="sidebar-link">22.Peer-to-peer: Trackerless Bittorrent and DHTs</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/23.html" class="sidebar-link">23.Peer-to-peer: Bitcoin</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/24.html" class="sidebar-link">24.Project demos</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_20-atomicity-two-phase-commit"><a href="#_20-atomicity-two-phase-commit" class="header-anchor">#</a> 20.Atomicity: Two-Phase Commit</h1> <p>Topics:
+distributed commit, two-phase commit
+distributed transactions
+Argus -- language for distributed programming</p> <p>Distributed commit:
+A bunch of computers are cooperating on some task, e.g. bank transfer
+Each computer has a different role, e.g. src and dst bank account
+Want to ensure atomicity: all execute, or none execute
+&quot;distributed transaction&quot;
+Challenges: crashes and network failures</p> <p>We've seen the fundamental problem before
+What to do if <em>part</em> of a distributed computation crashes?
+IVY/Treadmarks had no answer
+MR/Spark could re-execute <em>part</em> of computation, for big data
+What about for small updates?</p> <p>Example:
+calendar system, each user has a calendar
+want to schedule meetings with multiple participants
+one server holds calendars of users A-M, another server holds N-Z
+[diagram: client, two servers]
+sched(u1, u2, t):
+begin_transaction
+ok1 = reserve(u1, t)
+ok2 = reserve(u2, t)
+if ok1 and ok2:
+commit
+else
+abort
+end_transaction
+the reserve() calls are RPCs to the two calendar servers
+We want both to reserve, or both not to reserve.
+What if 1st reserve() returns true, and then:
+2nd reserve() returns false (time not available)
+2nd reserve() doesn't return (lost RPC msg, u2's server crashes)
+2nd reserve() returns but then crashes
+client fails before 2nd reserve()
+We need a &quot;distributed commit protocol&quot;</p> <p>Idea: tentative changes, later commit or undo (abort)
+reserve_handler(u, t):
+if u[t] is free:
+temp_u[t] = taken -- A TEMPORARY VERSION
+return true
+else:
+return false
+commit_handler():
+copy temp_u[t] to real u[t]
+abort_handler():
+discard temp_u[t]</p> <p>Idea: single entity decides whether to commit
+to prevent any chance of disagreement
+let's call it the Transaction Coordinator (TC)
+[time diagram: client, TC, A, B]
+client sends RPCs to A, B
+on end_transaction, client sends &quot;go&quot; to TC
+TC/A/B execute distributed commit protocol...
+TC reports &quot;commit&quot; or &quot;abort&quot; to client</p> <p>We want two properties for distributed commit protocol:
+TC, A, and B start in state &quot;unknown&quot;
+each can move to state &quot;abort&quot; or &quot;commit&quot;
+but then each never changes mind
+Correctness:
+if any commit, none abort
+if any abort, none commit
+Performance:
+(since doing nothing is correct...)
+if no failures, and A and B can commit, then commit.
+if failures, come to some conclusion ASAP.</p> <p>We're going to develop a protocol called &quot;two-phase commit&quot;
+Used by distributed databases for multi-server transactions
+And by Spanner and Argus</p> <p>Two-phase commit without failures:
+[time diagram: client, TC, A, B]
+client sends reserve() RPCs to A, B
+client sends &quot;go&quot; to TC
+TC sends &quot;prepare&quot; messages to A and B.
+A and B respond, saying whether they're willing to commit.
+Respond &quot;yes&quot; if haven't crashed, timed out, &amp;c.
+If both say &quot;yes&quot;, TC sends &quot;commit&quot; messages.
+If either says &quot;no&quot;, TC sends &quot;abort&quot; messages.
+A/B &quot;decide to commit&quot; if they get a commit message.
+I.e. they actually modify the user's calendar.</p> <p>Why is this correct so far?
+Neither can commit unless they both agreed.
+Crucial that neither changes mind after responding to prepare
+Not even if failure</p> <p>What about failures?
+Network broken/lossy
+Server crashes
+Both visible as timeout when expecting a message.</p> <p>Where do hosts wait for messages?</p> <ol><li>TC waits for yes/no.</li> <li>A and B wait for prepare and commit/abort.</li></ol> <p>Termination protocol summary:
+TC t/o for yes/no -&gt; abort
+B t/o for prepare, -&gt; abort
+B t/o for commit/abort, B voted no -&gt; abort
+B t/o for commit/abort, B voted yes -&gt; block</p> <p>TC timeout while waiting for yes/no from A/B.
+TC has not sent any &quot;commit&quot; messages.
+So TC can safely abort, and send &quot;abort&quot; messages.</p> <p>A/B timeout while waiting for prepare from TC
+have not yet responded to prepare
+so can abort
+respond &quot;no&quot; to future prepare</p> <p>A/B timeout while waiting for commit/abort from TC.
+Let's talk about just B (A is symmetric).
+If B voted &quot;no&quot;, it can unilaterally abort.
+So what if B voted &quot;yes&quot;?
+Can B unilaterally decide to abort?
+No! TC might have gotten &quot;yes&quot; from both,
+and sent out &quot;commit&quot; to A, but crashed before sending to B.
+So then A would commit and B would abort: incorrect.
+B can't unilaterally commit, either:
+A might have voted &quot;no&quot;.</p> <p>If B voted &quot;yes&quot;, it must &quot;block&quot;: wait for TC decision.</p> <p>What if B crashes and restarts?
+If B sent &quot;yes&quot; before crash, B must remember!
+--- this is today's question
+Can't change to &quot;no&quot; (and thus abort) after restart
+Since TC may have seen previous yes and told A to commit
+Thus:
+B must remember on disk before saying &quot;yes&quot;, including modified data.
+B reboots, disk says &quot;yes&quot; but no &quot;commit&quot;, must ask TC.
+If TC says &quot;commit&quot;, copy modified data to real data.</p> <p>What if TC crashes and restarts?
+If TC might have sent &quot;commit&quot; or &quot;abort&quot; before crash, TC must remember!
+And repeat that if anyone asks (i.e. if A/B/client didn't get msg).
+Thus TC must write &quot;commit&quot; to disk before sending commit msgs.
+Can't change mind since A/B/client have already acted.</p> <p>This protocol is called &quot;two-phase commit&quot;.
+What properties does it have?</p> <ul><li>All hosts that decide reach the same decision.</li> <li>No commit unless everyone says &quot;yes&quot;.</li> <li>TC failure can make servers block until repair.</li></ul> <p>What about concurrent transactions?
+We realy want atomic distributed transactions,
+not just single atomic commit.
+x and y are bank balances
+x and y start out as $10
+T1 is doing a transfer of $1 from x to y
+T1:
+add(x, 1)  -- server A
+add(y, -1) -- server B
+T2:
+tmp1 = get(x)
+tmp2 = get(y)
+print tmp1, tmp2</p> <p>Problem:
+what if T2 runs between the two add() RPCs?
+then T2 will print 11, 10
+money will have been created!
+T2 should print 10,10 or 9,11</p> <p>The traditional approach is to provide &quot;serializability&quot;
+results should be as if transactions ran one at a time in some order
+either T1, then T2; or T2, then T1</p> <p>Why serializability?
+it allows transaction code to ignore the possibility of concurrency
+just write the transaction to take system from one legal state to another
+internally, the transaction can temporarily violate invariants
+but serializability guarantess no-one will notice</p> <p>One way to implement serializabilty is with &quot;two-phase locking&quot;
+this is what Argus does
+each database record has a lock
+the lock is stored at the server that stores the record
+no need for a central lock server
+each use of a record automatically acquires the record's lock
+thus add() handler implicitly acquires lock when it uses record x or y
+locks are held until <em>after</em> commit or abort</p> <p>Why hold locks until after commit/abort?
+why not release as soon as done with the record?
+e.g. why not have T2 release x's lock after first get()?
+T1 could then execute between T2's get()s
+T2 would print 10,9
+but that is not a serializable execution: neither T1;T2 nor T2;T1</p> <p>2PC perspective
+Used in sharded DBs when a transaction uses data on multiple shards
+But it has a bad reputation:
+slow because of multiple phases / message exchanges
+locks are held over the prepare/commit exchanges
+TC crash can cause indefinite blocking, with locks held
+Thus usually used only in a single small domain
+E.g. not between banks, not between airlines, not over wide area</p> <p>Paxos and two-phase commit solve different problems!
+Use Paxos to high availability by replicating
+i.e. to be able to operate when some servers are crashed
+the servers must have identical state
+Use 2PC when each participant does something different
+And <em>all</em> of them must do their part
+2PC does not help availability
+since all servers must be up to get anything done
+Paxos does not ensure that all servers do something
+since only a majority have to be alive</p> <p>What if you want high availability <em>and</em> distributed commit?
+[diagram]
+Each &quot;server&quot; should be a Paxos-replicated service
+And the TC should be Paxos-replicated
+Run two-phase commit where each participant is a replicated service
+Then you can tolerate failures and still make progress
+This is what Spanner does (for update transactions)</p> <p>Case study: Argus</p> <p>Argus's big ideas:
+Language support for distributed programs
+Very cool: language abstracts away ugly parts of distrib systems
+Aimed at services interacting via RPC
+Clean handling of RPC and server failure
+Transactional updates via 2PC
+So crash results in entire transaction un-done, not partial update
+Easy persistence (&quot;stable&quot;):
+Ordinary variables automatically persisted to disk
+Automatic crash recovery
+Easy concurrency control:
+Multiple clients means multiple distributed transactions
+Automatic locking of language objects</p> <p>The overall design story seems very sensible
+Starting point: you want to handle RPC failures cleanly
+Clean failure handling means Argus needs transactions
+Transaction roll-back means Argus must manage program objects
+Crash recovery means Argus must handle persisting program objects</p> <p>Picture
+&quot;guardian&quot; is like an RPC server
+has state (variables) and handlers
+&quot;handler&quot; is an RPC handler
+reads and writes local variables
+&quot;action&quot; is a distributed atomic transaction
+action on A
+A RPC to B
+B RPC to C
+A RPC to D
+A finishes action
+prepare msgs to B, C, D
+commit msgs to B, C, D</p> <p>The style is to send RPC to where the data is
+Not to fetch the data
+Argus is not a storage system</p> <p>Look at bank example
+page 309 (and 306): bank transfer</p> <p>Points to notice
+stable keyword (programmer never writes to disk &amp;c)
+atomic keyword (programmer almost never locks/unlocks)
+enter topaction (in transfer)
+coenter (in transfer)
+RPCs are hidden (e.g. f.withdraw())
+RPC error handling hidden (just aborts)</p> <p>what if deposit account doesn't exist?
+but f.withdraw(from) has already been called?
+how to un-do?
+what's the guardian state when withdraw() handler returns?
+lock, temporary version, just in memory</p> <p>what if an audit runs during a transfer?
+how does the audit not see the tentative new balances?</p> <p>if a guardian crashes and reboots, what happens to its locks?
+can it just forget about pre-crash locks?</p> <p>subactions
+each RPC is actually a sub-action
+the RPC can fail or abort w/o aborting surrounding action
+this lets actions e.g. try one server, then another
+if RPC reply lost, subaction will abort, undo
+much cleaner than e.g. Go RPC</p> <p>is Argus's implicit locking the right thing?
+very convenient!
+don't have to worry about forgetting to lock!
+(though deadlocks are easy)
+databases work (and worked) this way; it's a sucessful idea</p> <p>is transactions + RPC + 2PC a good design point?
+programmability pro:
+very easy to get nice fault tolerance semantics
+performance con:
+lots of msgs and disk writes
+2PC and 2PL hold locks for a while, block if failure</p> <p>is Argus's language integration the right thing?
+i.e. persisting and locking language objects
+it looks very convenient (and it is)</p> <p>why didn't more systems pick up on Argus' language-based approach?
+Java RMI is perhaps the closest in common use
+perhaps people prefer to build distributed systems around data
+not around RPC
+e.g. big web sites are very storage-centric
+database provides transactions, persistence, &amp;c
+tables, records, and queries are more powerful than Argus' data
+maybe there is a better language-based scheme waiting to be found</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">lastUpdate:</span> <span class="time">4/6/2021, 2:11:34 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note/mit/fen-bu-shi-xi-tong/19.html" class="prev">
+        19.Distributed systems in the real world (Guest lecturer: Emil Sit)
+      </a></span> <span class="next"><a href="/note/mit/fen-bu-shi-xi-tong/21.html">
+        21.Atomicity: Optimistic Concurrency Control
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/note/assets/js/app.d5006f3d.js" defer></script><script src="/note/assets/js/2.65e5b2f3.js" defer></script><script src="/note/assets/js/101.fd3e754f.js" defer></script>
+  </body>
+</html>

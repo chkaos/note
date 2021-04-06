@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>13.Disconnected Operation: Eventual Consistency | CHKAOS</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/note/egg.png">
+    <meta name="description" content="My Note Collection">
+    
+    <link rel="preload" href="/note/assets/css/0.styles.ba589cc9.css" as="style"><link rel="preload" href="/note/assets/js/app.d5006f3d.js" as="script"><link rel="preload" href="/note/assets/js/2.65e5b2f3.js" as="script"><link rel="preload" href="/note/assets/js/93.682fd046.js" as="script"><link rel="prefetch" href="/note/assets/js/10.ae2f2d04.js"><link rel="prefetch" href="/note/assets/js/100.c68d38be.js"><link rel="prefetch" href="/note/assets/js/101.fd3e754f.js"><link rel="prefetch" href="/note/assets/js/102.5c217b08.js"><link rel="prefetch" href="/note/assets/js/103.449bcd79.js"><link rel="prefetch" href="/note/assets/js/104.1b5b375d.js"><link rel="prefetch" href="/note/assets/js/105.a61b2017.js"><link rel="prefetch" href="/note/assets/js/106.e81cfff0.js"><link rel="prefetch" href="/note/assets/js/107.a75923b3.js"><link rel="prefetch" href="/note/assets/js/108.891948b3.js"><link rel="prefetch" href="/note/assets/js/109.a2545875.js"><link rel="prefetch" href="/note/assets/js/11.4ab4a5a3.js"><link rel="prefetch" href="/note/assets/js/110.6d0886e8.js"><link rel="prefetch" href="/note/assets/js/12.255d9150.js"><link rel="prefetch" href="/note/assets/js/13.794e7ac8.js"><link rel="prefetch" href="/note/assets/js/14.d32c7fdd.js"><link rel="prefetch" href="/note/assets/js/15.67cfbf95.js"><link rel="prefetch" href="/note/assets/js/16.3c73a976.js"><link rel="prefetch" href="/note/assets/js/17.8806b699.js"><link rel="prefetch" href="/note/assets/js/18.378bd860.js"><link rel="prefetch" href="/note/assets/js/19.48c8434f.js"><link rel="prefetch" href="/note/assets/js/20.1fdb582e.js"><link rel="prefetch" href="/note/assets/js/21.3e08c9be.js"><link rel="prefetch" href="/note/assets/js/22.810fe1a0.js"><link rel="prefetch" href="/note/assets/js/23.5ba70e2d.js"><link rel="prefetch" href="/note/assets/js/24.9681b927.js"><link rel="prefetch" href="/note/assets/js/25.c0e5deaa.js"><link rel="prefetch" href="/note/assets/js/26.aae4bdc7.js"><link rel="prefetch" href="/note/assets/js/27.7f17e5f5.js"><link rel="prefetch" href="/note/assets/js/28.61ef96a0.js"><link rel="prefetch" href="/note/assets/js/29.f8d63307.js"><link rel="prefetch" href="/note/assets/js/3.031640f4.js"><link rel="prefetch" href="/note/assets/js/30.817d5cd9.js"><link rel="prefetch" href="/note/assets/js/31.e4ea696a.js"><link rel="prefetch" href="/note/assets/js/32.aba63c9c.js"><link rel="prefetch" href="/note/assets/js/33.1aa6facd.js"><link rel="prefetch" href="/note/assets/js/34.69d2bc3f.js"><link rel="prefetch" href="/note/assets/js/35.f82bd55f.js"><link rel="prefetch" href="/note/assets/js/36.20a42b33.js"><link rel="prefetch" href="/note/assets/js/37.7ab6c748.js"><link rel="prefetch" href="/note/assets/js/38.04cf7e1e.js"><link rel="prefetch" href="/note/assets/js/39.87ad9256.js"><link rel="prefetch" href="/note/assets/js/4.0876ef1d.js"><link rel="prefetch" href="/note/assets/js/40.fa12820d.js"><link rel="prefetch" href="/note/assets/js/41.22bd816e.js"><link rel="prefetch" href="/note/assets/js/42.c107915c.js"><link rel="prefetch" href="/note/assets/js/43.983b5fc5.js"><link rel="prefetch" href="/note/assets/js/44.75f6ceb2.js"><link rel="prefetch" href="/note/assets/js/45.98830da6.js"><link rel="prefetch" href="/note/assets/js/46.550f0b22.js"><link rel="prefetch" href="/note/assets/js/47.8fbd223c.js"><link rel="prefetch" href="/note/assets/js/48.edf4b3f9.js"><link rel="prefetch" href="/note/assets/js/49.7508a3de.js"><link rel="prefetch" href="/note/assets/js/5.369c3e08.js"><link rel="prefetch" href="/note/assets/js/50.04715961.js"><link rel="prefetch" href="/note/assets/js/51.277d9998.js"><link rel="prefetch" href="/note/assets/js/52.ebc26274.js"><link rel="prefetch" href="/note/assets/js/53.471c676f.js"><link rel="prefetch" href="/note/assets/js/54.9e46fdf4.js"><link rel="prefetch" href="/note/assets/js/55.8a98c441.js"><link rel="prefetch" href="/note/assets/js/56.b5f6e00a.js"><link rel="prefetch" href="/note/assets/js/57.f6fb0c39.js"><link rel="prefetch" href="/note/assets/js/58.d92a7b7d.js"><link rel="prefetch" href="/note/assets/js/59.33c88c84.js"><link rel="prefetch" href="/note/assets/js/6.34251819.js"><link rel="prefetch" href="/note/assets/js/60.68db27af.js"><link rel="prefetch" href="/note/assets/js/61.ce3eefe1.js"><link rel="prefetch" href="/note/assets/js/62.a3e76ed5.js"><link rel="prefetch" href="/note/assets/js/63.b9084887.js"><link rel="prefetch" href="/note/assets/js/64.e1d868ed.js"><link rel="prefetch" href="/note/assets/js/65.0d77e0a0.js"><link rel="prefetch" href="/note/assets/js/66.fe465e07.js"><link rel="prefetch" href="/note/assets/js/67.76ca73a0.js"><link rel="prefetch" href="/note/assets/js/68.2498dd7c.js"><link rel="prefetch" href="/note/assets/js/69.f03ab615.js"><link rel="prefetch" href="/note/assets/js/7.273a5831.js"><link rel="prefetch" href="/note/assets/js/70.cad85a7e.js"><link rel="prefetch" href="/note/assets/js/71.5dcb8b9a.js"><link rel="prefetch" href="/note/assets/js/72.827102a3.js"><link rel="prefetch" href="/note/assets/js/73.315b5fe4.js"><link rel="prefetch" href="/note/assets/js/74.def8de65.js"><link rel="prefetch" href="/note/assets/js/75.a54fced2.js"><link rel="prefetch" href="/note/assets/js/76.6cae1891.js"><link rel="prefetch" href="/note/assets/js/77.12cb32b9.js"><link rel="prefetch" href="/note/assets/js/78.5994be50.js"><link rel="prefetch" href="/note/assets/js/79.bbc37f01.js"><link rel="prefetch" href="/note/assets/js/8.ba3fa28e.js"><link rel="prefetch" href="/note/assets/js/80.eeb65418.js"><link rel="prefetch" href="/note/assets/js/81.f876286e.js"><link rel="prefetch" href="/note/assets/js/82.a58003e1.js"><link rel="prefetch" href="/note/assets/js/83.13c9c65b.js"><link rel="prefetch" href="/note/assets/js/84.dca226ee.js"><link rel="prefetch" href="/note/assets/js/85.38911042.js"><link rel="prefetch" href="/note/assets/js/86.4f2e3cde.js"><link rel="prefetch" href="/note/assets/js/87.bb576b86.js"><link rel="prefetch" href="/note/assets/js/88.ba3e1a83.js"><link rel="prefetch" href="/note/assets/js/89.cc281bcf.js"><link rel="prefetch" href="/note/assets/js/9.557b7160.js"><link rel="prefetch" href="/note/assets/js/90.b68af197.js"><link rel="prefetch" href="/note/assets/js/91.a0945e77.js"><link rel="prefetch" href="/note/assets/js/92.accc5e5d.js"><link rel="prefetch" href="/note/assets/js/94.c47d39d0.js"><link rel="prefetch" href="/note/assets/js/95.6363826c.js"><link rel="prefetch" href="/note/assets/js/96.36edf40e.js"><link rel="prefetch" href="/note/assets/js/97.75b6c735.js"><link rel="prefetch" href="/note/assets/js/98.8b5d3421.js"><link rel="prefetch" href="/note/assets/js/99.e03485fe.js">
+    <link rel="stylesheet" href="/note/assets/css/0.styles.ba589cc9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note/" class="home-link router-link-active"><img src="/note/favicon.png" alt="CHKAOS" class="logo"> <span class="site-name can-hide">CHKAOS</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note/MIT/" class="nav-link">
+  Mit
+</a></div><div class="nav-item"><a href="/note/Leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/note/Interview/" class="nav-link">
+  Interview
+</a></div><div class="nav-item"><a href="http://chkaos.top" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/chkaos/note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note/MIT/" class="nav-link">
+  Mit
+</a></div><div class="nav-item"><a href="/note/Leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/note/Interview/" class="nav-link">
+  Interview
+</a></div><div class="nav-item"><a href="http://chkaos.top" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/chkaos/note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note/mit/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/note/mit/schedule.html" class="sidebar-link">计划</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机科学与编程导论(python)</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机科学数学</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>电子工程与计算机科学导论1</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>电子工程与计算机科学导论2(交流网络)</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法导论</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>软件构造</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>网络</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机网络导论</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>操作系统</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>分布式系统</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/note/mit/fen-bu-shi-xi-tong/" aria-current="page" class="sidebar-link">6.824 分布式系统</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/01.html" class="sidebar-link">Introduction</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/02.html" class="sidebar-link">2: Infrastructure: RPC and threads</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/03.html" class="sidebar-link">3.Fault Tolerance: primary/backup replication</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/04.html" class="sidebar-link">4.Fault Tolerance: FDS Case Study</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/05.html" class="sidebar-link">5: Fault Tolerance:Paxos</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/06.html" class="sidebar-link">6: Fault Tolerance:Raft</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/07.html" class="sidebar-link">7.Guest lecturer: Russ Cox (Google/Go)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/08.html" class="sidebar-link">8.Case Studies: Replicated File System -- Harp</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/09.html" class="sidebar-link">9. Distributed Computing: Sequential consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/10.html" class="sidebar-link">10.Distributed Computing: Relaxed consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/11.html" class="sidebar-link">11.Disconnected Operation: Version Vectors and File Synchronization</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/12.html" aria-current="page" class="active sidebar-link">13.Disconnected Operation: Eventual Consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/13.html" class="sidebar-link">13.MapReduce revisited</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/14.html" class="sidebar-link">14.Spark Case Study</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/15.html" class="sidebar-link">15.Guest lecturer: Wilson Hsieh (Google)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/16.html" class="sidebar-link">16.Scaling Memcache at Facebook</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/17.html" class="sidebar-link">17.Case Studies: Relaxed Consistency-PNUTS</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/18.html" class="sidebar-link">18. Case Studies:Dynamo</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/19.html" class="sidebar-link">19.Distributed systems in the real world (Guest lecturer: Emil Sit)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/20.html" class="sidebar-link">20.Atomicity: Two-Phase Commit</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/21.html" class="sidebar-link">21.Atomicity: Optimistic Concurrency Control</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/22.html" class="sidebar-link">22.Peer-to-peer: Trackerless Bittorrent and DHTs</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/23.html" class="sidebar-link">23.Peer-to-peer: Bitcoin</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/24.html" class="sidebar-link">24.Project demos</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_13-disconnected-operation-eventual-consistency"><a href="#_13-disconnected-operation-eventual-consistency" class="header-anchor">#</a> 13.Disconnected Operation: Eventual Consistency</h1> <p>Managing Update Conflicts in Bayou, a Weakly Connected Replicated
+Storage System Terry, Theimer, Petersen, Demers, Spreitzer, Hauser,
+SOSP 95
+some material from Flexible Update Propagation for Weakly Consistent
+Replication, SOSP 97</p> <p>Why this paper?
+Eventual consistency is pretty common
+git, iPhone sync, Dropbox, Amazon Dynamo
+Why do people like eventual consistency?
+fast read/write of local copy (no primary, no paxos)
+disconnected operation
+What goes wrong?
+doesn't look like &quot;single copy&quot; (no primary, no paxos)
+conflicting writes to different copies
+how to reconcile them when discovered?
+Bayou has the most sophisticated reconciliation story</p> <p>Paper context:
+Early 1990s (like Ficus)
+Dawn of PDAs, laptops, tablets
+H/W clunky but clear potential
+Commercial devices did not have wireless
+Devices might be off or not have network access
+This problem has not gone away!
+iPhone sync, Dropbox sync, Dynamo</p> <p>Let's build a conference room scheduler
+Only one meeting allowed at a time (one room).
+Each entry has a time and a description.
+We want everyone to end up seeing the same set of entries.</p> <p>Traditional approach: one server
+Server executes one client request at a time
+Checks for conflicting time, says yes or no
+Updates DB
+Proceeds to next request
+Server implicitly chooses order for concurrent requests</p> <p>Why aren't we satisfied with central server?
+I want to use scheduler on disconnected iPhone &amp;c
+So need DB replica in each node.
+Modify on any node, as well as read.
+Periodic connectivity to net.
+Periodic direct contact with other calendar users (e.g. bluetooth).</p> <p>Straw man 1: merge DBs.
+Similar to iPhone calendar sync, or file sync.
+May need to compare every DB entry -- lots of time and net b/w.
+Still need a story for conflicting entries, i.e. two meetings at same time.
+User may not be available to decide at time of DB merge.
+So need automatic reconciliation.</p> <p>Idea for conflicts: update functions
+Application supplies a function, not a new value.
+Read current state of DB, decide best change.
+E.g. &quot;Meet at 9 if room is free at 9, else 10, else 11.&quot;
+Rather than just &quot;Meet at 9&quot;
+Function can make reconciliation decision for absent user.
+Sync exchanges functions, not DB content.</p> <p>Problem: can't just apply update functions to DB replica
+A's fn: staff meeting at 10:00 or 11:00
+B's fn: hiring meeting at 10:00 or 11:00
+X syncs w/ A, then B
+Y syncs w/ B, then A
+Will X put A's meeting at 10:00, and Y put A's at 11:00?</p> <p>Goal: eventual consistency
+OK for X and Y to disagree initially
+But after enough syncing, all nodes' DBs should be identical</p> <p>Idea: ordered update log
+Ordered log of updates at each node.
+Syncing == ensure both nodes have same updates in log.
+DB is result of applying update functions in order.
+Same log =&gt; same order =&gt; same DB content.</p> <p>How can nodes agree on update order?
+Update ID: &lt;time T, node ID&gt;
+T is creating node's wall-clock time.
+Ordering updates a and b:
+a &lt; b if a.T &lt; b.T or (a.T = b.T and a.ID &lt; b.ID)</p> <p>Example:
+&lt;10,A&gt;: staff meeting at 10:00 or 11:00
+&lt;20,B&gt;: hiring meeting at 10:00 or 11:00
+What's the correct eventual outcome?
+the result of executing update functions in timestamp order
+staff at 10:00, hiring at 11:00</p> <p>What DB content before sync?
+A: staff at 10:00
+B: hiring at 10:00
+This is what A/B user will see before syncing.</p> <p>Now A and B sync with each other
+Each sorts new entries into its log, order by time-stamp
+Both now know the full set of updates
+A can just run B's update function
+But B has <em>already</em> run B's operation, too soon!</p> <p>Roll back and replay
+B needs to to &quot;roll back&quot; DB, re-run both ops in the right order
+Big point: the log holds the truth; the DB is just an optimization
+We will optimize roll-back in a bit</p> <p>Displayed meeting room calendar entries are &quot;tentative&quot;
+B's user saw hiring at 10, then it changed to hiring at 11</p> <p>Will update order be consistent with wall-clock time?
+Maybe A went first (in wall-clock time) with &lt;10,A&gt;
+Node clocks unlikely to be perfectly synchronized
+So B could then generate &lt;9,B&gt;
+B's meeting gets priority, even though A asked first
+Not &quot;externally consistent&quot;</p> <p>Will update order be consistent with causality?
+What if A adds a meeting,
+then B sees A's meeting,
+then B deletes A's meeting.
+Perhaps
+&lt;10,A&gt; add
+&lt;9,B&gt; delete -- B's clock is slow
+Now delete will be ordered before add!</p> <p>Lamport logical clocks for causal consistency
+Want to timestamp events s.t.
+if node observes E1, then generates E2, then TS(E2) &gt; TS(E1)
+So all nodes will order E1, then E2
+Tmax = highest time-stamp seen from any node (including self)
+T = max(Tmax + 1, wall-clock time) -- to generate a timestamp
+Note properties:
+E1 then E2 on same node =&gt; TS(E1) &lt; TS(E2)
+BUT
+TS(E1) &lt; TS(E2) does not imply E1 came before E2</p> <p>Logical clock solves add/delete causality example
+When B sees &lt;10,A&gt;,
+B will set its Tmax to 10, so
+B will generate &lt;11,B&gt; for its delete</p> <p>Irritating that there could always be a long-delayed update with lower TS
+That can cause the results of my update to change
+User can never be sure if meeting time is final!
+Would be nice if updates were eventually &quot;stable&quot;
+=&gt; no changes in update order up to that point
+=&gt; results can never again change -- you know for sure when your meeting is
+=&gt; don't have to roll back, re-run committed updates</p> <p>Bad idea: a fully decentralized &quot;commit&quot; scheme
+Proposal: &lt;10,A&gt; is stable if all nodes have seen all updates w/ TS &lt;= 10
+Have sync always send in log order -- &quot;prefix property&quot;
+If you have seen updates w/ TS &gt; 10 from <em>every</em> node
+Then you'll never again see one &lt; &lt;10,A&gt;
+So &lt;10,A&gt; is stable
+Why doesn't Bayou do this?</p> <p>How does Bayou commit updates, so that they are stable?
+One node designated &quot;primary replica&quot;.
+It marks each update it receives with a permanent CSN.
+Commit Sequence Number.
+That update is committed.
+So a complete time stamp is &lt;CSN, local-time, node-id&gt;
+Uncommitted updates come after all committed updates.
+CSN notifications are synced between nodes.
+The CSNs define a total order for committed updates.
+All nodes will eventually agree on it.</p> <p>Will commit order match tentative order?
+Often.
+Syncs send in log order (prefix property)
+Including updates learned from other nodes.
+So if A's update log says
+&lt;-,10,X&gt;
+&lt;-,20,A&gt;
+A will send both to primary, in that order
+Primary will assign CSNs in that order
+Commit order will, in this case, match tentative order</p> <p>Will commit order always match tentative order?
+No: primary may see newer updates before older ones.
+A has just: &lt;-,10,A&gt; W1
+B has just: &lt;-,20,B&gt; W2
+If C sees both, C's order: W1 W2
+B syncs with primary, gets CSN=5.
+Later A syncs w/ primary, gets CSN=6.
+When C syncs w/ primary, order will change to W2 W1
+&lt;5,20,B&gt; W1
+&lt;6,10,A&gt; W2
+So: committing may change order.</p> <p>Committing allows app to tell users which calendar entries are stable.
+A stable meeting room time is final.</p> <p>Nodes can discard committed updates.
+Instead, keep a copy of the DB as of the highest known CSN.
+Roll back to that DB when replaying tentative update log.
+Never need to roll back farther.
+Prefix property guarantees seen CSN=x =&gt; seen CSN&lt;x.
+No changes to update order among committed updates.</p> <p>How do I sync if I've discarded part of my log?
+Suppose I've discarded all updates with CSNs.
+I keep a copy of the stable DB reflecting just discarded entries.
+When I propagate to node X:
+If node X's highest CSN is less than mine,
+I can send him my stable DB reflecting just committed updates.
+Node X can use my DB as starting point.
+And X can discard all CSN log entries.
+Then play his tentative updates into that DB.
+If node X's highest CSN is greater than mine,
+X doesn't need my DB.
+In practice, Bayou nodes keep the last few committed updates.
+To reduce chance of having to send whole DB during sync.</p> <p>How to sync?
+A sending to B
+Need a quick way for B to tell A what to send
+Committed updates easy: B sends its CSN to A
+What about tentative updates?
+A has:
+&lt;-,10,X&gt;
+&lt;-,20,Y&gt;
+&lt;-,30,X&gt;
+&lt;-,40,X&gt;
+B has:
+&lt;-,10,X&gt;
+&lt;-,20,Y&gt;
+&lt;-,30,X&gt;
+At start of sync, B tells A &quot;X 30, Y 20&quot;
+Sync prefix property means B has all X updates before 30, all Y before 20
+A sends all X's updates after &lt;-,30,X&gt;, all Y's updates after &lt;-,20,X&gt;, &amp;c
+This is a version vector -- it summarize log content
+It's the &quot;F&quot; vector in Figure 4
+A's F: [X:40,Y:20]
+B's F: [X:30,Y:20]</p> <p>How could we cope with a new server Z joining the system?
+Could it just start generating writes, e.g. &lt;-,1,Z&gt; ?
+And other nodes just start including Z in VVs?
+If A syncs to B, A has &lt;-,10,Z&gt;, but B has no Z in VV
+A should pretend B's VV was [Z:0,...]</p> <p>What happens when Z retires (leaves the system)?
+We want to stop including Z in VVs!
+How to announce that Z is gone?
+Z sends update &lt;-,?,Z&gt; &quot;retiring&quot;
+If you see a retirement update, omit Z from VV
+How to deal with a VV that's missing Z?
+If A has log entries from Z, but B's VV has no Z entry:
+e.g. A has &lt;-,25,Z&gt;, B's VV is just [A:20, B:21]
+Maybe Z has retired, B knows, A does not
+Maybe Z is new, A knows, B does not
+Need a way to disambiguate: Z missing from VV b/c new, or b/c retired?</p> <p>Bayou's retirement plan
+Z joins by contacting some server X
+Z's ID is &lt;Tz,X&gt;
+Tz is X's logical clock as of when Z joined
+X issues &lt;-,Tz,X&gt;:&quot;new server Z&quot;</p> <p>How does ID=&lt;Tz,X&gt; scheme help disambiguate new vs forgotten?
+Suppose Z's ID is &lt;20,X&gt;
+A syncs to B
+A has log entry from Z &lt;-,25,&lt;20,X&gt;&gt;
+B's VV has no Z entry
+One case:
+B's VV: [X:10, ...]
+10 &lt; 20 implies B hasn't yet seen X's &quot;new server Z&quot; update
+The other case:
+B's VV: [X:30, ...]
+20 &lt; 30 implies B once knew about Z, but then saw a retirement update</p> <p>Let's step back</p> <p>Is eventual consistency a useful idea?
+Yes: people want fast writes to local copies
+iPhone sync, Dropbox, Dynamo, Riak, Cassandra, &amp;c</p> <p>Are update conflicts a real problem?
+Yes -- all systems have some more or less awkward solution</p> <p>Is Bayou's complexity warranted?
+I.e. log of update functions, version vectors, tentative operations
+Only critical if you want peer-to-peer sync
+I.e. both disconnected operation AND ad-hoc connectivity
+Only tolerable if humans are main consumers of data
+Otherwise you can sync through a central server (iPhone, Dropbox)
+Or read locally but send updates through a master (PNUTS, Spanner)</p> <p>But there's are good ideas for us to learn from Bayou
+Update functions for automatic application-driven conflict resolution
+Ordered update log is the real truth, not the DB
+Logical clock for causal consistency</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">lastUpdate:</span> <span class="time">4/6/2021, 2:11:34 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note/mit/fen-bu-shi-xi-tong/11.html" class="prev">
+        11.Disconnected Operation: Version Vectors and File Synchronization
+      </a></span> <span class="next"><a href="/note/mit/fen-bu-shi-xi-tong/13.html">
+        13.MapReduce revisited
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/note/assets/js/app.d5006f3d.js" defer></script><script src="/note/assets/js/2.65e5b2f3.js" defer></script><script src="/note/assets/js/93.682fd046.js" defer></script>
+  </body>
+</html>

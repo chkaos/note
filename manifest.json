@@ -1,0 +1,16 @@
+{
+  "name": "MIT-Challenge",
+  "short_name": "MIT-Challenge",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "description": "My MIT Challenge inspired by Scott Young",
+  "theme_color": "blue",
+  "icons": [
+    {
+      "src": "./favicon.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ]
+}

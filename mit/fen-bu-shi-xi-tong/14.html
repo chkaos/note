@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>14.Spark Case Study | CHKAOS</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/note/egg.png">
+    <meta name="description" content="My Note Collection">
+    
+    <link rel="preload" href="/note/assets/css/0.styles.ba589cc9.css" as="style"><link rel="preload" href="/note/assets/js/app.d5006f3d.js" as="script"><link rel="preload" href="/note/assets/js/2.65e5b2f3.js" as="script"><link rel="preload" href="/note/assets/js/95.6363826c.js" as="script"><link rel="prefetch" href="/note/assets/js/10.ae2f2d04.js"><link rel="prefetch" href="/note/assets/js/100.c68d38be.js"><link rel="prefetch" href="/note/assets/js/101.fd3e754f.js"><link rel="prefetch" href="/note/assets/js/102.5c217b08.js"><link rel="prefetch" href="/note/assets/js/103.449bcd79.js"><link rel="prefetch" href="/note/assets/js/104.1b5b375d.js"><link rel="prefetch" href="/note/assets/js/105.a61b2017.js"><link rel="prefetch" href="/note/assets/js/106.e81cfff0.js"><link rel="prefetch" href="/note/assets/js/107.a75923b3.js"><link rel="prefetch" href="/note/assets/js/108.891948b3.js"><link rel="prefetch" href="/note/assets/js/109.a2545875.js"><link rel="prefetch" href="/note/assets/js/11.4ab4a5a3.js"><link rel="prefetch" href="/note/assets/js/110.6d0886e8.js"><link rel="prefetch" href="/note/assets/js/12.255d9150.js"><link rel="prefetch" href="/note/assets/js/13.794e7ac8.js"><link rel="prefetch" href="/note/assets/js/14.d32c7fdd.js"><link rel="prefetch" href="/note/assets/js/15.67cfbf95.js"><link rel="prefetch" href="/note/assets/js/16.3c73a976.js"><link rel="prefetch" href="/note/assets/js/17.8806b699.js"><link rel="prefetch" href="/note/assets/js/18.378bd860.js"><link rel="prefetch" href="/note/assets/js/19.48c8434f.js"><link rel="prefetch" href="/note/assets/js/20.1fdb582e.js"><link rel="prefetch" href="/note/assets/js/21.3e08c9be.js"><link rel="prefetch" href="/note/assets/js/22.810fe1a0.js"><link rel="prefetch" href="/note/assets/js/23.5ba70e2d.js"><link rel="prefetch" href="/note/assets/js/24.9681b927.js"><link rel="prefetch" href="/note/assets/js/25.c0e5deaa.js"><link rel="prefetch" href="/note/assets/js/26.aae4bdc7.js"><link rel="prefetch" href="/note/assets/js/27.7f17e5f5.js"><link rel="prefetch" href="/note/assets/js/28.61ef96a0.js"><link rel="prefetch" href="/note/assets/js/29.f8d63307.js"><link rel="prefetch" href="/note/assets/js/3.031640f4.js"><link rel="prefetch" href="/note/assets/js/30.817d5cd9.js"><link rel="prefetch" href="/note/assets/js/31.e4ea696a.js"><link rel="prefetch" href="/note/assets/js/32.aba63c9c.js"><link rel="prefetch" href="/note/assets/js/33.1aa6facd.js"><link rel="prefetch" href="/note/assets/js/34.69d2bc3f.js"><link rel="prefetch" href="/note/assets/js/35.f82bd55f.js"><link rel="prefetch" href="/note/assets/js/36.20a42b33.js"><link rel="prefetch" href="/note/assets/js/37.7ab6c748.js"><link rel="prefetch" href="/note/assets/js/38.04cf7e1e.js"><link rel="prefetch" href="/note/assets/js/39.87ad9256.js"><link rel="prefetch" href="/note/assets/js/4.0876ef1d.js"><link rel="prefetch" href="/note/assets/js/40.fa12820d.js"><link rel="prefetch" href="/note/assets/js/41.22bd816e.js"><link rel="prefetch" href="/note/assets/js/42.c107915c.js"><link rel="prefetch" href="/note/assets/js/43.983b5fc5.js"><link rel="prefetch" href="/note/assets/js/44.75f6ceb2.js"><link rel="prefetch" href="/note/assets/js/45.98830da6.js"><link rel="prefetch" href="/note/assets/js/46.550f0b22.js"><link rel="prefetch" href="/note/assets/js/47.8fbd223c.js"><link rel="prefetch" href="/note/assets/js/48.edf4b3f9.js"><link rel="prefetch" href="/note/assets/js/49.7508a3de.js"><link rel="prefetch" href="/note/assets/js/5.369c3e08.js"><link rel="prefetch" href="/note/assets/js/50.04715961.js"><link rel="prefetch" href="/note/assets/js/51.277d9998.js"><link rel="prefetch" href="/note/assets/js/52.ebc26274.js"><link rel="prefetch" href="/note/assets/js/53.471c676f.js"><link rel="prefetch" href="/note/assets/js/54.9e46fdf4.js"><link rel="prefetch" href="/note/assets/js/55.8a98c441.js"><link rel="prefetch" href="/note/assets/js/56.b5f6e00a.js"><link rel="prefetch" href="/note/assets/js/57.f6fb0c39.js"><link rel="prefetch" href="/note/assets/js/58.d92a7b7d.js"><link rel="prefetch" href="/note/assets/js/59.33c88c84.js"><link rel="prefetch" href="/note/assets/js/6.34251819.js"><link rel="prefetch" href="/note/assets/js/60.68db27af.js"><link rel="prefetch" href="/note/assets/js/61.ce3eefe1.js"><link rel="prefetch" href="/note/assets/js/62.a3e76ed5.js"><link rel="prefetch" href="/note/assets/js/63.b9084887.js"><link rel="prefetch" href="/note/assets/js/64.e1d868ed.js"><link rel="prefetch" href="/note/assets/js/65.0d77e0a0.js"><link rel="prefetch" href="/note/assets/js/66.fe465e07.js"><link rel="prefetch" href="/note/assets/js/67.76ca73a0.js"><link rel="prefetch" href="/note/assets/js/68.2498dd7c.js"><link rel="prefetch" href="/note/assets/js/69.f03ab615.js"><link rel="prefetch" href="/note/assets/js/7.273a5831.js"><link rel="prefetch" href="/note/assets/js/70.cad85a7e.js"><link rel="prefetch" href="/note/assets/js/71.5dcb8b9a.js"><link rel="prefetch" href="/note/assets/js/72.827102a3.js"><link rel="prefetch" href="/note/assets/js/73.315b5fe4.js"><link rel="prefetch" href="/note/assets/js/74.def8de65.js"><link rel="prefetch" href="/note/assets/js/75.a54fced2.js"><link rel="prefetch" href="/note/assets/js/76.6cae1891.js"><link rel="prefetch" href="/note/assets/js/77.12cb32b9.js"><link rel="prefetch" href="/note/assets/js/78.5994be50.js"><link rel="prefetch" href="/note/assets/js/79.bbc37f01.js"><link rel="prefetch" href="/note/assets/js/8.ba3fa28e.js"><link rel="prefetch" href="/note/assets/js/80.eeb65418.js"><link rel="prefetch" href="/note/assets/js/81.f876286e.js"><link rel="prefetch" href="/note/assets/js/82.a58003e1.js"><link rel="prefetch" href="/note/assets/js/83.13c9c65b.js"><link rel="prefetch" href="/note/assets/js/84.dca226ee.js"><link rel="prefetch" href="/note/assets/js/85.38911042.js"><link rel="prefetch" href="/note/assets/js/86.4f2e3cde.js"><link rel="prefetch" href="/note/assets/js/87.bb576b86.js"><link rel="prefetch" href="/note/assets/js/88.ba3e1a83.js"><link rel="prefetch" href="/note/assets/js/89.cc281bcf.js"><link rel="prefetch" href="/note/assets/js/9.557b7160.js"><link rel="prefetch" href="/note/assets/js/90.b68af197.js"><link rel="prefetch" href="/note/assets/js/91.a0945e77.js"><link rel="prefetch" href="/note/assets/js/92.accc5e5d.js"><link rel="prefetch" href="/note/assets/js/93.682fd046.js"><link rel="prefetch" href="/note/assets/js/94.c47d39d0.js"><link rel="prefetch" href="/note/assets/js/96.36edf40e.js"><link rel="prefetch" href="/note/assets/js/97.75b6c735.js"><link rel="prefetch" href="/note/assets/js/98.8b5d3421.js"><link rel="prefetch" href="/note/assets/js/99.e03485fe.js">
+    <link rel="stylesheet" href="/note/assets/css/0.styles.ba589cc9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note/" class="home-link router-link-active"><img src="/note/favicon.png" alt="CHKAOS" class="logo"> <span class="site-name can-hide">CHKAOS</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note/MIT/" class="nav-link">
+  Mit
+</a></div><div class="nav-item"><a href="/note/Leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/note/Interview/" class="nav-link">
+  Interview
+</a></div><div class="nav-item"><a href="http://chkaos.top" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/chkaos/note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note/MIT/" class="nav-link">
+  Mit
+</a></div><div class="nav-item"><a href="/note/Leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/note/Interview/" class="nav-link">
+  Interview
+</a></div><div class="nav-item"><a href="http://chkaos.top" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/chkaos/note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note/mit/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/note/mit/schedule.html" class="sidebar-link">计划</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机科学与编程导论(python)</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机科学数学</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>电子工程与计算机科学导论1</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>电子工程与计算机科学导论2(交流网络)</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法导论</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>软件构造</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>网络</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机网络导论</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>操作系统</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>分布式系统</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/note/mit/fen-bu-shi-xi-tong/" aria-current="page" class="sidebar-link">6.824 分布式系统</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/01.html" class="sidebar-link">Introduction</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/02.html" class="sidebar-link">2: Infrastructure: RPC and threads</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/03.html" class="sidebar-link">3.Fault Tolerance: primary/backup replication</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/04.html" class="sidebar-link">4.Fault Tolerance: FDS Case Study</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/05.html" class="sidebar-link">5: Fault Tolerance:Paxos</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/06.html" class="sidebar-link">6: Fault Tolerance:Raft</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/07.html" class="sidebar-link">7.Guest lecturer: Russ Cox (Google/Go)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/08.html" class="sidebar-link">8.Case Studies: Replicated File System -- Harp</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/09.html" class="sidebar-link">9. Distributed Computing: Sequential consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/10.html" class="sidebar-link">10.Distributed Computing: Relaxed consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/11.html" class="sidebar-link">11.Disconnected Operation: Version Vectors and File Synchronization</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/12.html" class="sidebar-link">13.Disconnected Operation: Eventual Consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/13.html" class="sidebar-link">13.MapReduce revisited</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/14.html" aria-current="page" class="active sidebar-link">14.Spark Case Study</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/15.html" class="sidebar-link">15.Guest lecturer: Wilson Hsieh (Google)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/16.html" class="sidebar-link">16.Scaling Memcache at Facebook</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/17.html" class="sidebar-link">17.Case Studies: Relaxed Consistency-PNUTS</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/18.html" class="sidebar-link">18. Case Studies:Dynamo</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/19.html" class="sidebar-link">19.Distributed systems in the real world (Guest lecturer: Emil Sit)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/20.html" class="sidebar-link">20.Atomicity: Two-Phase Commit</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/21.html" class="sidebar-link">21.Atomicity: Optimistic Concurrency Control</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/22.html" class="sidebar-link">22.Peer-to-peer: Trackerless Bittorrent and DHTs</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/23.html" class="sidebar-link">23.Peer-to-peer: Bitcoin</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/24.html" class="sidebar-link">24.Project demos</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_14-spark-case-study"><a href="#_14-spark-case-study" class="header-anchor">#</a> 14.Spark Case Study</h1> <p>Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing
+Zaharia, Chowdhury, Das, Dave, Ma, McCauley, Franklin, Shenker, Stoica
+NSDI 2012</p> <p>Had TreadMarks since 1996, and Distributed Shared Memory is a very general abstraction. Why use MapReduce? Or why even use TreadMarks?
+Say looking through a log, why not implement it using the regular abstractions (sockets, files etc?)
+Saves a lot of work:
+communication between nodes
+distribute code
+schedule work
+handle failures</p> <p>The MapReduce paper had a lot of impact on big data analytics: simple and powerful.
+But bit too rigid. Other systems proposed fixes:</p> <p>Dryad (Microsoft 2007): any directed acyclic graph, edges are communication channels, can be through disk or via TCP.</p> <ul><li>can implement multiple iterations</li> <li>can pipeline through RAM, don't have to go to disk</li></ul> <ul><li>very low level:
+doesn't deal with partitioning of data, want 100,000 mappers? add 100,000 nodes
+what happens if you run out of RAM? (brief mention of &quot;downgrading&quot; a TCP channel to a disk file)</li> <li>doesn't checkpoint/replicate, in the middle of the run (so failures can be expensive)</li></ul> <ul><li>Pig latin (Yahoo 2008): programming language that compiles to MapReduce. Adds &quot;Database style&quot; operators, mainly Join
+Join: dataset 1 (k1,v1), dataset 2 (k1, v2). ==&gt; (k1, v1, v2), takes cartesian product (all tuples of combinations of v1, v2 with same k1)
+Example: dataset 1: all clicks on products on website, dataset 2: demographics (age of users), want average age of customer per product.
+<ul><li>allows multiple iterations</li> <li>can express more</li></ul> <ul><li>still has rigidness from MR (writes to disk after map, to replicated storage after reduce, RAM)</li></ul></li></ul> <p>Spark</p> <p>A framework for large scale distributed computation.
+An expressive programming model (can express iteration and joins)
+Gives user control over trade off between fault tolerance with performance
+if user frequently perist w/REPLICATE, fast recovery, but slower execution
+if infrequently, fast execution but slow recovery</p> <p>Relatively recent release, but used by (partial list) IBM, Groupon, Yahoo, Baidu..
+Can get substantial performance gains when dataset (or a major part of it) can fit in memory, so anticipated to get more traction.
+MapReduce is simple</p> <p>Abstraction of Resilient Distributed Datasets: an RDD is a collection of partitions of records.
+Two operations on RDDs:
+Transformations: compute a new RDD from existing RDDs (flatMap, reduceByKey)
+this just specifies a plan. runtime is lazy - doesn't have to materialize (compute), so it doesn't
+Actions: where some effect is requested: result to be stored, get specific value, etc.
+causes RDDs to materialize.</p> <p>Logistic regression (from paper):
+val points = spark.textFile(...)
+.map(parsePoint).persist()
+var w = // random initial vector
+for (i &lt;- 1 to ITERATIONS) {
+val gradient = points.map{ p =&gt;
+p.x * (1/(1+exp(-p.y*(w dot p.x)))-1)*p.y
+}.reduce((a,b) =&gt; a+b)
+w -= gradient
+}</p> <ul><li>w is sent with the closure to the nodes</li> <li>materializes a new RDD in every loop iteration</li></ul> <p>PageRank (from paper):
+val links = spark.textFile(...).map(...).persist() // (URL, outlinks)
+var ranks = // RDD of (URL, rank) pairs
+for (i &lt;- 1 to ITERATIONS) {
+// Build an RDD of (targetURL, float) pairs
+// with the contributions sent by each page
+val contribs = links.join(ranks).flatMap {
+(url, (links, rank)) =&gt;
+links.map(dest =&gt; (dest, rank/links.size))
+}
+// Sum contributions by URL and get new ranks
+ranks = contribs.reduceByKey((x,y) =&gt; x+y)
+.mapValues(sum =&gt; a/N + (1-a)*sum)
+}</p> <p>What is an RDD (table 3, S4)
+list of partitions
+list of (parent RDD, wide/narrow dependency)
+function to compute
+partitioning scheme
+computation placement hint
+Each transformation takes (one or more) RDDs, and outputs the transformed RDD.</p> <p>Q: Why does an RDD carry metadata on its partitioning?
+A: so transformations that depend on multiple RDDs know whether they need to shuffle data (wide dependency) or not (narrow)
+Allows users control over locality and reduces shuffles.</p> <p>Q: Why the distinction between narrow and wide dependencies?
+A: In case of failure.
+narrow dependency only depends on a few partitions that need to be recomputed.
+wide dependency might require an entire RDD</p> <p>Handling faults.
+When Spark computes, by default it only generates one copy of the result, doesn't replicate. Without replication, no matter if it's put in RAM or disk, if node fails, on permanent failure, data is gone.
+When some partition is lost and needs to be recomputed, the scheduler needs to find a way to recompute it. (a fault can be detected by using a heartbeat)
+will need to compute all partitions it depends on, until a partition in RAM/disk, or in replicated storage.
+if wide dependency, will need all partitions of that dependency to recompute, if narrow just one that RDD</p> <p>So two mechanisms enable recovery from faults: lineage, and policy of what partitions to persist (either to one node or replicated)
+We talked about lineage before (Transformations)</p> <p>The user can call persist on an RDD.
+With RELIABLE flag, will keep multiple copies (in RAM if possible, disk if RAM is full)
+With REPLICATE flag, will write to stable storage (HDFS)
+Without flags, will try to keep in RAM (will spill to disk when RAM is full)</p> <p>Q: Is persist a transformation or an action?
+A: neither. It doesn't create a new RDD, and doesn't cause materialization. It's an instruction to the scheduler.</p> <p>Q: By calling persist without flags, is it guaranteed that in case of fault that RDD wouldn't have to be recomputed?
+A: No. There is no replication, so a node holding a partition could fail.
+Replication (either in RAM or in stable storage) is necessary</p> <p>Currently only manual checkpointing via calls to persist.
+Q: Why implement checkpointing? (it's expensive)
+A: Long lineage could cause large recovery time. Or when there are wide dependencies a single failure might require many partition re-computations.</p> <p>Checkpointing is like buying insurance: pay writing to stable storage so can recover faster in case of fault.
+Depends on frequency of failure and on cost of slower recovery
+An automatic checkpointing will take these into account, together with size of data (how much time it takes to write), and computation time.</p> <p>So can handle a node failure by recomputing lineage up to partitions that can be read from RAM/Disk/replicated storage.
+Q: Can Spark handle network partitions?
+A: Nodes that cannot communicate with scheduler will appear dead. The part of the network that can be reached from scheduler can continue
+computation, as long as it has enough data to start the lineage from (if all replicas of a required partition cannot be reached, cluster
+cannot make progress)</p> <p>What happens when there isn't enough memory?</p> <ul><li>LRU (Least Recently Used) on partitions
+<ul><li>first on non-persisted</li> <li>then persisted (but they will be available on disk. makes sure user cannot overbook RAM)</li></ul></li> <li>user can have control on order of eviction via &quot;persistence priority&quot;</li> <li>no reason not to discard non-persisted partitions (if they've already been used)</li></ul> <p>Shouldn't throw away partitions in RAM that are required but hadn't been used.</p> <p>degrades to &quot;almost&quot; MapReduce behavior
+In figure 7, k-means on 100 Hadoop nodes takes 76-80 seconds
+In figure 12, k-means on 25 Spark nodes (with no partitions allowed in memory) takes 68.8
+Difference could be because MapReduce would use replicated storage after reduce, but Spark by default would only spill to local disk, no network latency and I/O load on replicas.
+no architectural reason why Spark would be slower than MR</p> <p>Spark assumes it runs on an isolated memory space (multiple schedulers don't share the memory pool well).
+Can be solved using a &quot;unified memory manager&quot;
+Note that when there is reuse of RDDs between jobs, they need to run on the same scheduler to benefit anyway.</p> <p>(from [P09])
+Why not just use parallel databases? Commercially available: &quot;Teradata, Aster Data, Netezza, DATAl-
+legro (and therefore soon Microsoft SQL Server via Project Madi-
+son), Dataupia, Vertica, ParAccel, Neoview, Greenplum, DB2 (via
+the Database Partitioning Feature), and Oracle (via Exadata)&quot;</p> <p>At the time, Parallel DBMS were</p> <ul><li>Some are expensive and Hard to set up right</li> <li>SQL declarative (vs. procedural)</li> <li>Required schema, indices etc (an advantages in some cases)</li> <li>&quot;Not made here&quot;</li></ul> <p>Picollo [P10] uses snapshots of a distributed key-value store to handle fault tolerance.</p> <ul><li>Computation is comprised of control functions and kernel functions.</li> <li>Control functions are responsible for setting up tables (also locality), launching kernels, synchronization (barriers that wait for all kernels to complete), and starting checkpoints</li> <li>Kernels use the key value store. There is a function to merge conflicting writes.</li> <li>Checkpoints using Chandy-Lamport</li></ul> <ul><li>all data has to fit in RAM</li> <li>to recover, all nodes need to revert (expensive)</li> <li>no way to mitigate stragglers, cannot just re-run a kernel without reverting to a snapshot</li></ul> <p>[P09] &quot;A Comparison of Approaches to Large-Scale Data Analysis&quot;, Pavlo et al. SIGMOD'09
+[P10] Piccolo: Building Fast, Distributed Programs with Partitioned Tables, Power and Li, OSDI'10</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">lastUpdate:</span> <span class="time">4/6/2021, 2:11:34 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note/mit/fen-bu-shi-xi-tong/13.html" class="prev">
+        13.MapReduce revisited
+      </a></span> <span class="next"><a href="/note/mit/fen-bu-shi-xi-tong/15.html">
+        15.Guest lecturer: Wilson Hsieh (Google)
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/note/assets/js/app.d5006f3d.js" defer></script><script src="/note/assets/js/2.65e5b2f3.js" defer></script><script src="/note/assets/js/95.6363826c.js" defer></script>
+  </body>
+</html>

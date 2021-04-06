@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>5: Fault Tolerance:Paxos | CHKAOS</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/note/egg.png">
+    <meta name="description" content="My Note Collection">
+    
+    <link rel="preload" href="/note/assets/css/0.styles.ba589cc9.css" as="style"><link rel="preload" href="/note/assets/js/app.d5006f3d.js" as="script"><link rel="preload" href="/note/assets/js/2.65e5b2f3.js" as="script"><link rel="preload" href="/note/assets/js/86.4f2e3cde.js" as="script"><link rel="prefetch" href="/note/assets/js/10.ae2f2d04.js"><link rel="prefetch" href="/note/assets/js/100.c68d38be.js"><link rel="prefetch" href="/note/assets/js/101.fd3e754f.js"><link rel="prefetch" href="/note/assets/js/102.5c217b08.js"><link rel="prefetch" href="/note/assets/js/103.449bcd79.js"><link rel="prefetch" href="/note/assets/js/104.1b5b375d.js"><link rel="prefetch" href="/note/assets/js/105.a61b2017.js"><link rel="prefetch" href="/note/assets/js/106.e81cfff0.js"><link rel="prefetch" href="/note/assets/js/107.a75923b3.js"><link rel="prefetch" href="/note/assets/js/108.891948b3.js"><link rel="prefetch" href="/note/assets/js/109.a2545875.js"><link rel="prefetch" href="/note/assets/js/11.4ab4a5a3.js"><link rel="prefetch" href="/note/assets/js/110.6d0886e8.js"><link rel="prefetch" href="/note/assets/js/12.255d9150.js"><link rel="prefetch" href="/note/assets/js/13.794e7ac8.js"><link rel="prefetch" href="/note/assets/js/14.d32c7fdd.js"><link rel="prefetch" href="/note/assets/js/15.67cfbf95.js"><link rel="prefetch" href="/note/assets/js/16.3c73a976.js"><link rel="prefetch" href="/note/assets/js/17.8806b699.js"><link rel="prefetch" href="/note/assets/js/18.378bd860.js"><link rel="prefetch" href="/note/assets/js/19.48c8434f.js"><link rel="prefetch" href="/note/assets/js/20.1fdb582e.js"><link rel="prefetch" href="/note/assets/js/21.3e08c9be.js"><link rel="prefetch" href="/note/assets/js/22.810fe1a0.js"><link rel="prefetch" href="/note/assets/js/23.5ba70e2d.js"><link rel="prefetch" href="/note/assets/js/24.9681b927.js"><link rel="prefetch" href="/note/assets/js/25.c0e5deaa.js"><link rel="prefetch" href="/note/assets/js/26.aae4bdc7.js"><link rel="prefetch" href="/note/assets/js/27.7f17e5f5.js"><link rel="prefetch" href="/note/assets/js/28.61ef96a0.js"><link rel="prefetch" href="/note/assets/js/29.f8d63307.js"><link rel="prefetch" href="/note/assets/js/3.031640f4.js"><link rel="prefetch" href="/note/assets/js/30.817d5cd9.js"><link rel="prefetch" href="/note/assets/js/31.e4ea696a.js"><link rel="prefetch" href="/note/assets/js/32.aba63c9c.js"><link rel="prefetch" href="/note/assets/js/33.1aa6facd.js"><link rel="prefetch" href="/note/assets/js/34.69d2bc3f.js"><link rel="prefetch" href="/note/assets/js/35.f82bd55f.js"><link rel="prefetch" href="/note/assets/js/36.20a42b33.js"><link rel="prefetch" href="/note/assets/js/37.7ab6c748.js"><link rel="prefetch" href="/note/assets/js/38.04cf7e1e.js"><link rel="prefetch" href="/note/assets/js/39.87ad9256.js"><link rel="prefetch" href="/note/assets/js/4.0876ef1d.js"><link rel="prefetch" href="/note/assets/js/40.fa12820d.js"><link rel="prefetch" href="/note/assets/js/41.22bd816e.js"><link rel="prefetch" href="/note/assets/js/42.c107915c.js"><link rel="prefetch" href="/note/assets/js/43.983b5fc5.js"><link rel="prefetch" href="/note/assets/js/44.75f6ceb2.js"><link rel="prefetch" href="/note/assets/js/45.98830da6.js"><link rel="prefetch" href="/note/assets/js/46.550f0b22.js"><link rel="prefetch" href="/note/assets/js/47.8fbd223c.js"><link rel="prefetch" href="/note/assets/js/48.edf4b3f9.js"><link rel="prefetch" href="/note/assets/js/49.7508a3de.js"><link rel="prefetch" href="/note/assets/js/5.369c3e08.js"><link rel="prefetch" href="/note/assets/js/50.04715961.js"><link rel="prefetch" href="/note/assets/js/51.277d9998.js"><link rel="prefetch" href="/note/assets/js/52.ebc26274.js"><link rel="prefetch" href="/note/assets/js/53.471c676f.js"><link rel="prefetch" href="/note/assets/js/54.9e46fdf4.js"><link rel="prefetch" href="/note/assets/js/55.8a98c441.js"><link rel="prefetch" href="/note/assets/js/56.b5f6e00a.js"><link rel="prefetch" href="/note/assets/js/57.f6fb0c39.js"><link rel="prefetch" href="/note/assets/js/58.d92a7b7d.js"><link rel="prefetch" href="/note/assets/js/59.33c88c84.js"><link rel="prefetch" href="/note/assets/js/6.34251819.js"><link rel="prefetch" href="/note/assets/js/60.68db27af.js"><link rel="prefetch" href="/note/assets/js/61.ce3eefe1.js"><link rel="prefetch" href="/note/assets/js/62.a3e76ed5.js"><link rel="prefetch" href="/note/assets/js/63.b9084887.js"><link rel="prefetch" href="/note/assets/js/64.e1d868ed.js"><link rel="prefetch" href="/note/assets/js/65.0d77e0a0.js"><link rel="prefetch" href="/note/assets/js/66.fe465e07.js"><link rel="prefetch" href="/note/assets/js/67.76ca73a0.js"><link rel="prefetch" href="/note/assets/js/68.2498dd7c.js"><link rel="prefetch" href="/note/assets/js/69.f03ab615.js"><link rel="prefetch" href="/note/assets/js/7.273a5831.js"><link rel="prefetch" href="/note/assets/js/70.cad85a7e.js"><link rel="prefetch" href="/note/assets/js/71.5dcb8b9a.js"><link rel="prefetch" href="/note/assets/js/72.827102a3.js"><link rel="prefetch" href="/note/assets/js/73.315b5fe4.js"><link rel="prefetch" href="/note/assets/js/74.def8de65.js"><link rel="prefetch" href="/note/assets/js/75.a54fced2.js"><link rel="prefetch" href="/note/assets/js/76.6cae1891.js"><link rel="prefetch" href="/note/assets/js/77.12cb32b9.js"><link rel="prefetch" href="/note/assets/js/78.5994be50.js"><link rel="prefetch" href="/note/assets/js/79.bbc37f01.js"><link rel="prefetch" href="/note/assets/js/8.ba3fa28e.js"><link rel="prefetch" href="/note/assets/js/80.eeb65418.js"><link rel="prefetch" href="/note/assets/js/81.f876286e.js"><link rel="prefetch" href="/note/assets/js/82.a58003e1.js"><link rel="prefetch" href="/note/assets/js/83.13c9c65b.js"><link rel="prefetch" href="/note/assets/js/84.dca226ee.js"><link rel="prefetch" href="/note/assets/js/85.38911042.js"><link rel="prefetch" href="/note/assets/js/87.bb576b86.js"><link rel="prefetch" href="/note/assets/js/88.ba3e1a83.js"><link rel="prefetch" href="/note/assets/js/89.cc281bcf.js"><link rel="prefetch" href="/note/assets/js/9.557b7160.js"><link rel="prefetch" href="/note/assets/js/90.b68af197.js"><link rel="prefetch" href="/note/assets/js/91.a0945e77.js"><link rel="prefetch" href="/note/assets/js/92.accc5e5d.js"><link rel="prefetch" href="/note/assets/js/93.682fd046.js"><link rel="prefetch" href="/note/assets/js/94.c47d39d0.js"><link rel="prefetch" href="/note/assets/js/95.6363826c.js"><link rel="prefetch" href="/note/assets/js/96.36edf40e.js"><link rel="prefetch" href="/note/assets/js/97.75b6c735.js"><link rel="prefetch" href="/note/assets/js/98.8b5d3421.js"><link rel="prefetch" href="/note/assets/js/99.e03485fe.js">
+    <link rel="stylesheet" href="/note/assets/css/0.styles.ba589cc9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note/" class="home-link router-link-active"><img src="/note/favicon.png" alt="CHKAOS" class="logo"> <span class="site-name can-hide">CHKAOS</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note/MIT/" class="nav-link">
+  Mit
+</a></div><div class="nav-item"><a href="/note/Leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/note/Interview/" class="nav-link">
+  Interview
+</a></div><div class="nav-item"><a href="http://chkaos.top" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/chkaos/note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note/MIT/" class="nav-link">
+  Mit
+</a></div><div class="nav-item"><a href="/note/Leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/note/Interview/" class="nav-link">
+  Interview
+</a></div><div class="nav-item"><a href="http://chkaos.top" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/chkaos/note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note/mit/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/note/mit/schedule.html" class="sidebar-link">计划</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机科学与编程导论(python)</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机科学数学</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>电子工程与计算机科学导论1</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>电子工程与计算机科学导论2(交流网络)</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法导论</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>软件构造</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>网络</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机网络导论</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>操作系统</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>分布式系统</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/note/mit/fen-bu-shi-xi-tong/" aria-current="page" class="sidebar-link">6.824 分布式系统</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/01.html" class="sidebar-link">Introduction</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/02.html" class="sidebar-link">2: Infrastructure: RPC and threads</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/03.html" class="sidebar-link">3.Fault Tolerance: primary/backup replication</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/04.html" class="sidebar-link">4.Fault Tolerance: FDS Case Study</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/05.html" aria-current="page" class="active sidebar-link">5: Fault Tolerance:Paxos</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/06.html" class="sidebar-link">6: Fault Tolerance:Raft</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/07.html" class="sidebar-link">7.Guest lecturer: Russ Cox (Google/Go)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/08.html" class="sidebar-link">8.Case Studies: Replicated File System -- Harp</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/09.html" class="sidebar-link">9. Distributed Computing: Sequential consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/10.html" class="sidebar-link">10.Distributed Computing: Relaxed consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/11.html" class="sidebar-link">11.Disconnected Operation: Version Vectors and File Synchronization</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/12.html" class="sidebar-link">13.Disconnected Operation: Eventual Consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/13.html" class="sidebar-link">13.MapReduce revisited</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/14.html" class="sidebar-link">14.Spark Case Study</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/15.html" class="sidebar-link">15.Guest lecturer: Wilson Hsieh (Google)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/16.html" class="sidebar-link">16.Scaling Memcache at Facebook</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/17.html" class="sidebar-link">17.Case Studies: Relaxed Consistency-PNUTS</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/18.html" class="sidebar-link">18. Case Studies:Dynamo</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/19.html" class="sidebar-link">19.Distributed systems in the real world (Guest lecturer: Emil Sit)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/20.html" class="sidebar-link">20.Atomicity: Two-Phase Commit</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/21.html" class="sidebar-link">21.Atomicity: Optimistic Concurrency Control</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/22.html" class="sidebar-link">22.Peer-to-peer: Trackerless Bittorrent and DHTs</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/23.html" class="sidebar-link">23.Peer-to-peer: Bitcoin</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/24.html" class="sidebar-link">24.Project demos</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_5-fault-tolerance-paxos"><a href="#_5-fault-tolerance-paxos" class="header-anchor">#</a> 5: Fault Tolerance:Paxos</h1> <p>From Paxos Made Simple, by Leslie Lamport, 2001</p> <p>starting a new group of lectures on stronger fault tolerance
+today:
+cleaner approach to replication: RSM via Paxos
+you'll need Paxos for Lab 3
+subsequent lectures:
+improved Paxos-like protocols (Raft)
+using replication in systems (Harp, later Spanner)</p> <p>recall: RSM
+maintain replicas by executing operations in the same order
+requires all replicas to agree on the (set and) order of operations
+the point: if one server fails, can use other servers, which have state</p> <p>Lab 2 critique
+primary/backup with viewserver
+pro:
+only two k/v servers needed to tolerate one failure
+handles network partition correctly (viewserver's partition wins)
+con:
+viewserver is single point of failure</p> <p>network partition is the knottiest problem here
+over a network, one cannot distinguish:
+primary has crashed,
+so backup should take over
+primary is up and serving but net is partitioned,
+so backup should <em>not</em> take over
+viewserver solves this BUT is not fault-tolerant</p> <p>paxos lets us build replication schemes that:
+handle partition correctly
+have no single point of failure</p> <p>why paxos specifically?
+there are better protocols (Viewstamped Replication, Raft, ZAB)
+paxos is simple (as these things go)
+many other protocols are easy to view as variants of Paxos
+Paxos (and variants) are used a lot in real systems</p> <p>there are two hard topics here</p> <ol><li>how does Paxos work?</li> <li>how to use Paxos sensibly in a real system?
+#1 takes thought but is pretty well scoped
+#2 has been MUCH HARDER for people to figure out
+I'll talk about #2 first, for context</li></ol> <p>Paxos-based replication -- the big picture:
+[diagram: clients, replicas, log in each replica, k/v layer, paxos layer]
+no viewserver
+three replicas
+clients can send RPCs to any replica (not just primary)
+server appends each client op to a replicated <em>log</em> of operations
+Put, Get, Append
+numbered log entries -- instances -- seq
+Paxos agreement on content of each log entry
+note: each instance (log entry) is an entirely separate Paxos agreement
+with entirely separate proposal numbers</p> <p>what does Paxos provide?
+Lab 3 interface on each server:
+Start(seq, v) -- to propose v as value for instance seq
+fate, v := Status(seq) -- to find out the agreed value for instance seq
+correctness:
+if agreement reached, all agreeing servers agree on same value
+corollary: once any agreement reached, never changes its mind
+critical since, after agreement, servers may update state or reply to clients
+(may not agree if too many lost messages, crashed servers)
+fault-tolerance:
+can tolerate non-reachability of a minority of servers
+liveness:
+will reach agreement when a majority can communicate for long enough</p> <p>example:
+client sends Put(a,b) to S1
+S1 picks log entry 3
+S1 uses Paxos to get all servers to agree that entry 3 holds Put(a,b)</p> <p>example:
+client sends Get(a) to S2
+S2 picks log entry 4
+S2 uses Paxos to get all servers to agree that entry 4 holds Get(a)
+S2 scans log up to entry 4 to find latest Put(a,...)
+S2 replies with that value
+(S2 can cache content of DB up through last log scan)</p> <p>why a log?
+why not require all replicas to agree on each op in lock-step?
+doesn't matter if the state is small: can agree on entire state
+log is a big win if state is very large; log describes changes
+log helps replicas catch up
+if slow, miss messages, crash and restart</p> <p>summary of how to use Paxos for RSM:
+a log of Paxos instances
+each instance's value is a client command
+different instances' Paxos agreements are independent
+this is how Lab 3B works</p> <p>now let's switch to how a single Paxos agreement works</p> <p>agreement is hard (1):
+may be multiple proposals for the op in a particular log slot
+Sx may initially hear of one, Sy may hear of another
+clearly Sx or Sy must change its mind
+thus: multiple rounds, tentative initially
+how do we know when agreement is permanent -- no longer tentative?</p> <p>agreement is hard (2):
+if S1 and S2 are happy with a value, and S3 and S4 don't respond, are we done?
+agreement has to be able to complete even w/ failed servers
+we can't distinguish failed server from network partition
+so maybe S3/S4 are partitioned and have &quot;agreed&quot; on a different value!</p> <p>two main ideas in Paxos:</p> <ol><li>many rounds may be required but they will converge on one value</li> <li>a majority is required for agreement -- prevent &quot;split brain&quot;
+a key point: any two majorities overlap
+so any later majority will share at least one server w/ any earlier majority
+so any later majority can find out what earlier majority decided</li></ol> <p>Paxos sketch
+each server consists of three logical entities:
+proposer
+acceptor
+learner
+may be more than one proposer
+if multiple clients submit requests at the same time to diff servers
+each proposer wants to get agreement on its value
+proposer contacts acceptors, tries to assemble a majority
+might not get majority -&gt; new round</p> <p>basic Paxos exchange:
+proposer        acceptors
+prepare(n) -&gt;
+&lt;- prepare_ok(n, n_a, v_a)
+accept(n, v') -&gt;
+&lt;- accept_ok(n)
+decided(v') -&gt;</p> <p>why n?
+to distinguish among multiple rounds, e.g. proposer crashes, simul props
+want later rounds to supersede earlier ones
+numbers allow us to compare early/late
+n values must be unique and roughly follow time
+n = &lt;time, server ID&gt;
+e.g., ID can be server's IP address
+&quot;round&quot; is the same as &quot;proposal&quot; but completely different from &quot;instance&quot;
+round/proposal numbers are WITHIN a particular instance</p> <p>definition: server S accepts n/v
+S responded accept_ok to accept(n, v)</p> <p>definition: n/v is chosen
+a majority of servers accepted n/v</p> <p>the crucial property:
+if a value was chosen, any subsequent choice must be the same value
+i.e. protocol must not change its mind
+maybe a different proposer &amp;c, but same value!
+this allows us to freely start new rounds after crashes &amp;c
+AND it allows a server to safely execute a chosen command, or reply to client
+tricky b/c &quot;chosen&quot; is system-wide property
+e.g. majority accepts, then proposer crashes
+no server can tell locally that agreement was reached</p> <p>so:
+proposer doesn't send out value with prepare
+acceptors send back any value they have already accepted
+if there is one, proposer proposes that value
+to avoid changing an existing choice
+if no value already accepted,
+proposer can propose any value (e.g. a client request)
+proposer must get prepare_ok from majority
+to guarantee intersection with any previous majority,
+to guarantee proposer hears of any previously chosen value</p> <p>now the protocol -- see the handout</p> <p>proposer(v):
+choose n, unique and higher than any n seen so far
+send prepare(n) to all servers including self
+if prepare_ok(n, n_a, v_a) from majority:
+v' = v_a with highest n_a; choose own v otherwise
+send accept(n, v') to all
+if accept_ok(n) from majority:
+send decided(v') to all</p> <p>acceptor state:
+must persist across reboots
+n_p (highest prepare seen)
+n_a, v_a (highest accept seen)</p> <p>acceptor's prepare(n) handler:
+if n &gt; n_p
+n_p = n
+reply prepare_ok(n, n_a, v_a)
+else
+reply prepare_reject</p> <p>acceptor's accept(n, v) handler:
+if n &gt;= n_p
+n_p = n
+n_a = n
+v_a = v
+reply accept_ok(n)
+else
+reply accept_reject</p> <p>example 1 (normal operation):
+S1, S2, S3
+but S3 is dead or slow
+S1 starts proposal, n=1 v=A
+S1: p1    a1A    dA
+S2: p1    a1A    dA
+S3: dead...
+&quot;p1&quot; means Sx receives prepare(n=1)
+&quot;a1A&quot; means Sx receives accept(n=1, v=A)
+&quot;dA&quot; means Sx receives decided(v=A)
+these diagrams are not specific about who the proposer is
+it doesn't really matter
+the proposers are logically separate from the acceptors
+we only care about what acceptors saw and replied</p> <p>Note proposer only ever needs to wait for a majority of the servers
+so we can continue even though S3 was down
+proposer must not wait forever for any one acceptor's response</p> <p>What would happen if network partition?
+I.e. S3 was alive and had a proposed value B
+S3's prepare would not assemble a majority</p> <p>the homework question:
+How does Paxos ensure that the following sequence of events can't
+happen? What actually happens, and which value is ultimately chosen?
+proposer 1 wants v=X, crashes after sending two accepts
+proposer 2 wants v=Y
+S1: p1 a1X
+S2: p1     p2 a2?
+S3: p1 a1X p2 a2?
+S3's prepare_ok to proposer 2 really included &quot;X&quot;
+thus a2X, and so no problem
+the point:
+if the system has already reached agreement, majority will know value
+any new majority of prepares will intersect that majority
+so subsequent proposer will learn of already-agreed-on value
+and send it in accept msgs</p> <p>example 2 (concurrent proposers):
+S1 starts proposing n=10
+S1 sends out just one accept v=X
+S3 starts proposing n=11
+but S1 does not receive its proposal
+S3 only has to wait for a majority of proposal responses
+S1: p10 a10X
+S2: p10        p11
+S3: p10        p11  a11Y
+S1 is still sending out accept messages...
+has a value been chosen?
+could it go either way (X or Y) at this point?
+what will happen?
+what will S2 do if it gets a10X accept msg from S1?
+what will S1 do if it gets a11Y accept msg from S3?
+what if S3 were to crash at this point (and not restart)?</p> <p>how about this:
+S1: p10  a10X               p12
+S2: p10          p11  a11Y<br>
+S3: p10          p11        p12   a12X
+has the system agreed to a value at this point?
+after all, a majority have accepted value &quot;X&quot;</p> <p>what's the commit point?
+i.e. exactly when has agreement been reached?
+i.e. at what point might a server have executed the command?
+after a majority has the same v_a? no -- why not?  above counterexample
+after a majority has the same v_a/n_a? yes -- why sufficient?  sketch:
+suppose majority has same v_a/n_a
+acceptors will reject accept() with lower n
+for any higher n: prepare's must have seen our majority v_a/n_a (overlap)</p> <p>why does the proposer need to pick v_a with highest n_a?
+S1: p10  a10A               p12
+S2: p10          p11  a11B<br>
+S3: p10          p11  a11B  p12   a12?
+n=11 already agreed on vB
+n=12 sees both vA and vB, but must choose vB
+why: two cases:</p> <ol><li>there was a majority before n=11
+n=11's prepares would have seen value and re-used it
+so it's safe for n=12 to re-use n=11's value</li> <li>there was not a majority before n=11
+n=11 might have obtained a majority
+so it's required for n=12 to re-use n=11's value</li></ol> <p>why does prepare handler check that n &gt; n_p?
+it doesn't have to: a proposer that fails the check in
+prepare handler will fail same check in accept handler</p> <p>why does accept handler check n &gt;= n_p?
+to ensure later proposer sees any possible chosen value
+by preventing acceptance of old value once an acceptor
+has responded to new proposer's prepare
+w/o n &gt;= n_p check, you could get this bad scenario:
+S1: p1 p2 a1A
+S2: p1 p2 a1A a2B
+S3: p1 p2     a2B
+oops, for a while A was chosen, then changed to B!</p> <p>why does accept handler update n_p = n?
+required to prevent earlier n's from being accepted
+server can get accept(n,v) even though it never saw prepare(n)
+without n_p = n, can get this bad scenario:
+S1: p1    a2B a1A p3 a3A
+S2: p1 p2         p3 a3A
+S3:    p2 a2B
+oops, for a while B was chosen, then changed to A!</p> <p>what if proposer S2 chooses n &lt; S1's n?
+e.g. S2 didn't see any of S1's messages
+S2 won't make progress, so no correctness problem</p> <p>what if an acceptor crashes after receiving accept?
+S1: p1  a1X
+S2: p1  a1X reboot  p2  a2?
+S3: p1              p2  a2?
+the story:
+S2 is the only intersection between p1's and p2's majorities
+thus the only evidence that Paxos already chose X
+so S2 <em>must</em> return X in prepare_ok
+so S2 must be able to recover its pre-crash state
+thus: if S2 wants to re-join this Paxos instance,
+it must remember its n_p/v_a/n_a on disk.</p> <p>what if an acceptor reboots after sending prepare_ok?
+does it have to remember n_p on disk?
+if n_p not remembered, this could happen:
+S1: p10            a10X
+S2: p10 p11 reboot a10X a11Y
+S3:     p11             a11Y
+11's proposer did not see value X, so 11 proposed its own value Y
+but just before that, X had been chosen!
+b/c S2 did not remember to ignore a10X</p> <p>can Paxos get stuck?
+yes, if there is not a majority that can communicate
+how about if a majority is available?
+if proposers immediately retry w/ higher n after accept_reject,
+they can all keep each other from getting accepts accepted
+so don't retry immediately!
+pause a random amount of time, then re-try</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">lastUpdate:</span> <span class="time">4/6/2021, 2:11:34 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note/mit/fen-bu-shi-xi-tong/04.html" class="prev">
+        4.Fault Tolerance: FDS Case Study
+      </a></span> <span class="next"><a href="/note/mit/fen-bu-shi-xi-tong/06.html">
+        6: Fault Tolerance:Raft
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/note/assets/js/app.d5006f3d.js" defer></script><script src="/note/assets/js/2.65e5b2f3.js" defer></script><script src="/note/assets/js/86.4f2e3cde.js" defer></script>
+  </body>
+</html>

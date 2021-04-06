@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>11.Disconnected Operation: Version Vectors and File Synchronization | CHKAOS</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/note/egg.png">
+    <meta name="description" content="My Note Collection">
+    
+    <link rel="preload" href="/note/assets/css/0.styles.ba589cc9.css" as="style"><link rel="preload" href="/note/assets/js/app.d5006f3d.js" as="script"><link rel="preload" href="/note/assets/js/2.65e5b2f3.js" as="script"><link rel="preload" href="/note/assets/js/92.accc5e5d.js" as="script"><link rel="prefetch" href="/note/assets/js/10.ae2f2d04.js"><link rel="prefetch" href="/note/assets/js/100.c68d38be.js"><link rel="prefetch" href="/note/assets/js/101.fd3e754f.js"><link rel="prefetch" href="/note/assets/js/102.5c217b08.js"><link rel="prefetch" href="/note/assets/js/103.449bcd79.js"><link rel="prefetch" href="/note/assets/js/104.1b5b375d.js"><link rel="prefetch" href="/note/assets/js/105.a61b2017.js"><link rel="prefetch" href="/note/assets/js/106.e81cfff0.js"><link rel="prefetch" href="/note/assets/js/107.a75923b3.js"><link rel="prefetch" href="/note/assets/js/108.891948b3.js"><link rel="prefetch" href="/note/assets/js/109.a2545875.js"><link rel="prefetch" href="/note/assets/js/11.4ab4a5a3.js"><link rel="prefetch" href="/note/assets/js/110.6d0886e8.js"><link rel="prefetch" href="/note/assets/js/12.255d9150.js"><link rel="prefetch" href="/note/assets/js/13.794e7ac8.js"><link rel="prefetch" href="/note/assets/js/14.d32c7fdd.js"><link rel="prefetch" href="/note/assets/js/15.67cfbf95.js"><link rel="prefetch" href="/note/assets/js/16.3c73a976.js"><link rel="prefetch" href="/note/assets/js/17.8806b699.js"><link rel="prefetch" href="/note/assets/js/18.378bd860.js"><link rel="prefetch" href="/note/assets/js/19.48c8434f.js"><link rel="prefetch" href="/note/assets/js/20.1fdb582e.js"><link rel="prefetch" href="/note/assets/js/21.3e08c9be.js"><link rel="prefetch" href="/note/assets/js/22.810fe1a0.js"><link rel="prefetch" href="/note/assets/js/23.5ba70e2d.js"><link rel="prefetch" href="/note/assets/js/24.9681b927.js"><link rel="prefetch" href="/note/assets/js/25.c0e5deaa.js"><link rel="prefetch" href="/note/assets/js/26.aae4bdc7.js"><link rel="prefetch" href="/note/assets/js/27.7f17e5f5.js"><link rel="prefetch" href="/note/assets/js/28.61ef96a0.js"><link rel="prefetch" href="/note/assets/js/29.f8d63307.js"><link rel="prefetch" href="/note/assets/js/3.031640f4.js"><link rel="prefetch" href="/note/assets/js/30.817d5cd9.js"><link rel="prefetch" href="/note/assets/js/31.e4ea696a.js"><link rel="prefetch" href="/note/assets/js/32.aba63c9c.js"><link rel="prefetch" href="/note/assets/js/33.1aa6facd.js"><link rel="prefetch" href="/note/assets/js/34.69d2bc3f.js"><link rel="prefetch" href="/note/assets/js/35.f82bd55f.js"><link rel="prefetch" href="/note/assets/js/36.20a42b33.js"><link rel="prefetch" href="/note/assets/js/37.7ab6c748.js"><link rel="prefetch" href="/note/assets/js/38.04cf7e1e.js"><link rel="prefetch" href="/note/assets/js/39.87ad9256.js"><link rel="prefetch" href="/note/assets/js/4.0876ef1d.js"><link rel="prefetch" href="/note/assets/js/40.fa12820d.js"><link rel="prefetch" href="/note/assets/js/41.22bd816e.js"><link rel="prefetch" href="/note/assets/js/42.c107915c.js"><link rel="prefetch" href="/note/assets/js/43.983b5fc5.js"><link rel="prefetch" href="/note/assets/js/44.75f6ceb2.js"><link rel="prefetch" href="/note/assets/js/45.98830da6.js"><link rel="prefetch" href="/note/assets/js/46.550f0b22.js"><link rel="prefetch" href="/note/assets/js/47.8fbd223c.js"><link rel="prefetch" href="/note/assets/js/48.edf4b3f9.js"><link rel="prefetch" href="/note/assets/js/49.7508a3de.js"><link rel="prefetch" href="/note/assets/js/5.369c3e08.js"><link rel="prefetch" href="/note/assets/js/50.04715961.js"><link rel="prefetch" href="/note/assets/js/51.277d9998.js"><link rel="prefetch" href="/note/assets/js/52.ebc26274.js"><link rel="prefetch" href="/note/assets/js/53.471c676f.js"><link rel="prefetch" href="/note/assets/js/54.9e46fdf4.js"><link rel="prefetch" href="/note/assets/js/55.8a98c441.js"><link rel="prefetch" href="/note/assets/js/56.b5f6e00a.js"><link rel="prefetch" href="/note/assets/js/57.f6fb0c39.js"><link rel="prefetch" href="/note/assets/js/58.d92a7b7d.js"><link rel="prefetch" href="/note/assets/js/59.33c88c84.js"><link rel="prefetch" href="/note/assets/js/6.34251819.js"><link rel="prefetch" href="/note/assets/js/60.68db27af.js"><link rel="prefetch" href="/note/assets/js/61.ce3eefe1.js"><link rel="prefetch" href="/note/assets/js/62.a3e76ed5.js"><link rel="prefetch" href="/note/assets/js/63.b9084887.js"><link rel="prefetch" href="/note/assets/js/64.e1d868ed.js"><link rel="prefetch" href="/note/assets/js/65.0d77e0a0.js"><link rel="prefetch" href="/note/assets/js/66.fe465e07.js"><link rel="prefetch" href="/note/assets/js/67.76ca73a0.js"><link rel="prefetch" href="/note/assets/js/68.2498dd7c.js"><link rel="prefetch" href="/note/assets/js/69.f03ab615.js"><link rel="prefetch" href="/note/assets/js/7.273a5831.js"><link rel="prefetch" href="/note/assets/js/70.cad85a7e.js"><link rel="prefetch" href="/note/assets/js/71.5dcb8b9a.js"><link rel="prefetch" href="/note/assets/js/72.827102a3.js"><link rel="prefetch" href="/note/assets/js/73.315b5fe4.js"><link rel="prefetch" href="/note/assets/js/74.def8de65.js"><link rel="prefetch" href="/note/assets/js/75.a54fced2.js"><link rel="prefetch" href="/note/assets/js/76.6cae1891.js"><link rel="prefetch" href="/note/assets/js/77.12cb32b9.js"><link rel="prefetch" href="/note/assets/js/78.5994be50.js"><link rel="prefetch" href="/note/assets/js/79.bbc37f01.js"><link rel="prefetch" href="/note/assets/js/8.ba3fa28e.js"><link rel="prefetch" href="/note/assets/js/80.eeb65418.js"><link rel="prefetch" href="/note/assets/js/81.f876286e.js"><link rel="prefetch" href="/note/assets/js/82.a58003e1.js"><link rel="prefetch" href="/note/assets/js/83.13c9c65b.js"><link rel="prefetch" href="/note/assets/js/84.dca226ee.js"><link rel="prefetch" href="/note/assets/js/85.38911042.js"><link rel="prefetch" href="/note/assets/js/86.4f2e3cde.js"><link rel="prefetch" href="/note/assets/js/87.bb576b86.js"><link rel="prefetch" href="/note/assets/js/88.ba3e1a83.js"><link rel="prefetch" href="/note/assets/js/89.cc281bcf.js"><link rel="prefetch" href="/note/assets/js/9.557b7160.js"><link rel="prefetch" href="/note/assets/js/90.b68af197.js"><link rel="prefetch" href="/note/assets/js/91.a0945e77.js"><link rel="prefetch" href="/note/assets/js/93.682fd046.js"><link rel="prefetch" href="/note/assets/js/94.c47d39d0.js"><link rel="prefetch" href="/note/assets/js/95.6363826c.js"><link rel="prefetch" href="/note/assets/js/96.36edf40e.js"><link rel="prefetch" href="/note/assets/js/97.75b6c735.js"><link rel="prefetch" href="/note/assets/js/98.8b5d3421.js"><link rel="prefetch" href="/note/assets/js/99.e03485fe.js">
+    <link rel="stylesheet" href="/note/assets/css/0.styles.ba589cc9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note/" class="home-link router-link-active"><img src="/note/favicon.png" alt="CHKAOS" class="logo"> <span class="site-name can-hide">CHKAOS</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note/MIT/" class="nav-link">
+  Mit
+</a></div><div class="nav-item"><a href="/note/Leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/note/Interview/" class="nav-link">
+  Interview
+</a></div><div class="nav-item"><a href="http://chkaos.top" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/chkaos/note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note/MIT/" class="nav-link">
+  Mit
+</a></div><div class="nav-item"><a href="/note/Leetcode/" class="nav-link">
+  Leetcode
+</a></div><div class="nav-item"><a href="/note/Interview/" class="nav-link">
+  Interview
+</a></div><div class="nav-item"><a href="http://chkaos.top" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/chkaos/note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note/mit/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/note/mit/schedule.html" class="sidebar-link">计划</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机科学与编程导论(python)</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机科学数学</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>电子工程与计算机科学导论1</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>电子工程与计算机科学导论2(交流网络)</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法导论</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>软件构造</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>网络</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机网络导论</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>操作系统</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>分布式系统</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/note/mit/fen-bu-shi-xi-tong/" aria-current="page" class="sidebar-link">6.824 分布式系统</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/01.html" class="sidebar-link">Introduction</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/02.html" class="sidebar-link">2: Infrastructure: RPC and threads</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/03.html" class="sidebar-link">3.Fault Tolerance: primary/backup replication</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/04.html" class="sidebar-link">4.Fault Tolerance: FDS Case Study</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/05.html" class="sidebar-link">5: Fault Tolerance:Paxos</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/06.html" class="sidebar-link">6: Fault Tolerance:Raft</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/07.html" class="sidebar-link">7.Guest lecturer: Russ Cox (Google/Go)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/08.html" class="sidebar-link">8.Case Studies: Replicated File System -- Harp</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/09.html" class="sidebar-link">9. Distributed Computing: Sequential consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/10.html" class="sidebar-link">10.Distributed Computing: Relaxed consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/11.html" aria-current="page" class="active sidebar-link">11.Disconnected Operation: Version Vectors and File Synchronization</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/12.html" class="sidebar-link">13.Disconnected Operation: Eventual Consistency</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/13.html" class="sidebar-link">13.MapReduce revisited</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/14.html" class="sidebar-link">14.Spark Case Study</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/15.html" class="sidebar-link">15.Guest lecturer: Wilson Hsieh (Google)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/16.html" class="sidebar-link">16.Scaling Memcache at Facebook</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/17.html" class="sidebar-link">17.Case Studies: Relaxed Consistency-PNUTS</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/18.html" class="sidebar-link">18. Case Studies:Dynamo</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/19.html" class="sidebar-link">19.Distributed systems in the real world (Guest lecturer: Emil Sit)</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/20.html" class="sidebar-link">20.Atomicity: Two-Phase Commit</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/21.html" class="sidebar-link">21.Atomicity: Optimistic Concurrency Control</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/22.html" class="sidebar-link">22.Peer-to-peer: Trackerless Bittorrent and DHTs</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/23.html" class="sidebar-link">23.Peer-to-peer: Bitcoin</a></li><li><a href="/note/mit/fen-bu-shi-xi-tong/24.html" class="sidebar-link">24.Project demos</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_11-disconnected-operation-version-vectors-and-file-synchronization"><a href="#_11-disconnected-operation-version-vectors-and-file-synchronization" class="header-anchor">#</a> 11.Disconnected Operation: Version Vectors and File Synchronization</h1> <p>6.824 2015 Lecture 11: Optimism, Causality, Vector Timestamps</p> <p>Consistency so far
+Concurrency forces us to to think about meaning of reads/writes
+e.g. if P1 has seen P2's write, has P3 seen P2's write too?
+Sequential consistency: everyone sees same read/write order (IVY)
+Release consistency: everyone sees writes in unlock order (TreadMarks)</p> <p>Sequential and release consistency require central component:
+must ask before each operation to ensure ordering
+IVY: read faults and write faults -&gt; ask page's manager
+TreadMarks: acquire and release -&gt; ask lock manager</p> <p>Central component can be undesirable
+Bottleneck, single point of failure, requires network connectivity
+Can we get rid of it?</p> <p>Starting a new class of distributed systems:
+No central component
+Support disconnected or partially connected operation
+Use optimistic approach (always allow, clean up later)
+Provide eventual and causal consistency</p> <p>Example -- peer-to-peer chat
+We each have a computer attached to internet
+Can send at any time (optimistic), no central ordering
+Recv msg -&gt; add to end of chat window</p> <p>Do we care about message ordering for chat?
+Network may deliver in different order at different participants
+Suppose Alice is auctioning something
+Joe: $10
+Fred: $20
+Alice: the high bid is $20
+Maybe Sam sees:
+Joe: $10
+Alice: the high bid is $20</p> <p>What went wrong in this example?
+Alice &quot;computed&quot; her message based on certain inputs
+Only makes sense to Sam if he has seen those inputs too
+Why not have Alice's message describe what Alice had seen?
+Could fix Sam's order w/o requiring central component</p> <p>Definition: x causally precedes y
+x precedes y if:
+M0 does x, then M0 does y
+M0 does x, M0 sends msg to M1, M1 does y
+transitive closure
+x and y could be writes, or msgs, or file versions
+also &quot;y causally depends on x&quot;</p> <p>Definition: causal consistency
+if x causally precedes y, everyone sees x before y</p> <p>Pro: we can implement w/o central component
+Con: not a total order -- some events have no relative order</p> <p>Slow implementation of causal consistency
+Unique ID for every msg
+Node keeps set of all msg IDs received -- &quot;history&quot;
+When sending m, send current history set, too
+Receiver delays incoming msg m until has received everything in m's set</p> <p>History sets will grow huge -- can we abbreviate?
+Each node numbers its msgs 1, 2, 3, &amp;c
+Each message carries a vector:
+[ 4, 3, 7 ]
+Means sender had seen through msg 4 from H0, 3 from H1, 7 from H2
+This notation doesn't grow over time, unlike history sets
+Called a Vector Timestamp or Version Vector
+VTi[j] = x means host i has seen all of j's messages through x</p> <p>VT comparisons
+to answer &quot;should msg A be displayed before msg B?&quot;
+a &lt; b if:
+forall i: a[i] &lt;= b[i]  AND  exists j: a[j] &lt; b[j]
+i.e. a summarizes a proper prefix of b
+i.e. a causally precedes b
+a || b if:
+exists i,j: a[i] &lt; b[i] and a[j] &gt; b[j]
+i.e. neither summarizes a prefix of the other
+i.e. neither causally precedes the other</p> <p>Many systems use VT variants, but for somewhat different purposes
+TreadMarks, Ficus, Bayou, Dynamo, &amp;c
+&quot;I've seen everyone's updates up to this point&quot;
+&quot;event x preceded event y&quot;
+VTs are compact and decentralized</p> <p>Example use of VTs: CBCAST -- &quot;causal broadcast&quot; protocol
+General-purpose ordering protocol, e.g. for peer-to-peer chat
+From Cornell Isis research project
+Key property:
+Delivers messages to individual nodes in causal order
+If a causally precedes b, CBCAST delivers a first
+[diagram: node, msg buf, VC, chat app]
+Each node keeps a local vector clock, VC
+VCi[j] = k means app at node i has seen all msgs from j up through k
+send(m) at node i:
+VCi[i] += 1
+broadcast(m, i, VCi)
+on receipt of broadcast(m, i, v) at node j:
+j's CBCAST library buffers the message
+release to application only when:
+VCj &gt;= v, except v[i] = VCj[i] + 1
+i.e. node j has seen every msg that causally precedes m
+VCj[i] = v[i]
+so sends will reflect receipt of m</p> <p>Example:
+All VCs start &lt;0,0,0&gt;
+M0 sends &lt;1,0,0&gt;
+M1 receives &lt;1,0,0&gt;
+M1 sends &lt;1,1,0&gt;
+M2 receives &lt;1,1,0&gt; -- must delay
+M2 receives &lt;1,0,0&gt; -- can process, unblocks other msg</p> <p>Why fast?
+No central manager, no global order
+If no causal dependencies, CBCAST doesn't delay messages
+Example:
+M0 sends &lt;1,0&gt;
+M1 sends &lt;0,1&gt;
+Receivers are allowed to deliver in either order</p> <p>Causal consistency still allows more surprises than sequential
+Only causally related events are ordered
+So nodes can disagree on order of non-dependent events
+Sam can still see:
+Joe: $10
+Fred: $20
+Bob: $30
+Alice: the high bid is $20
+Causal consistency only says Alice's msg will be delivered after
+all msgs she had seen when she sent it
+<em>Not</em> that it will be delivered before all msgs she hadn't seen</p> <p>TreadMarks uses VTs to order writes to same variable by different machines:
+M0: a1 x=1 r1  a2 y=9 r2
+M1:              a1 x=2 r1
+M2:                           a1 a2 z = x + y r2 r1
+Could M2 hear x=2 from M1, then x=1 from M0?
+How does M2 know what to do?</p> <p>VTs are often used for optimistic updating of replicated data
+Everyone has a copy, anyone can write
+Don't want IVY-style MGR or locking: network delays, failures
+Need to sync replicas, accept only &quot;newest&quot; data, detect conflicts
+File sync (Ficus, Coda, Rumor)
+Distributed DBs (Amazon Dynamo, Voldemort, Riak)</p> <p>File synchronization -- e.g. Ficus
+Multiple computers have a copy of all files
+They can't always talk to each other (&quot;disconnected operation&quot;)
+User can always modify local copy of file -- optimistic
+Merge changes later</p> <p>Scenario:
+user has files replicated at work, at home, on laptop
+hosts may be disconnected: no WiFi, turned off
+edit on H1 for a while, sync changes to H2
+edit on H2, sync changes to H3
+edit on H3, sync to H1</p> <p>Goa: eventual consistency
+i.e. replicas often differ, but converge after enough syncs</p> <p>Goal: no lost updates
+Only OK for sync to copy version v2 over version v1 if
+v2 includes all updates that are in v1.</p> <p>Example 1:
+Focus on a single file
+H1: f=1 -&gt;H2       -&gt;H3
+H2:            f=2
+H3:                       -&gt;H2
+What is the right thing to do?
+Is it enough to simply take file with latest modification time?
+Yes in this case, as long as you carry them along correctly.
+I.e. H3 remembers mtime assigned by H1, not mtime of sync.</p> <p>Example 2:
+H1: f=1 -&gt;H2 f=2
+H2:                  f=0 -&gt;H1
+H2's mtime will be bigger.</p> <p>Should the file synchronizer use &quot;0&quot; and discard &quot;2&quot;?
+After all, f=0 was a later update than f=2.
+No: that would violate the No Lost Updates goal.
+E.g. you and I both made changes to the file.</p> <p>What do do if concurrent updates to the same data?
+Sync should somehow detect this &quot;conflict&quot; situation.
+Sometimes conflicts can be automatically resolved once detected.
+Sometimes the user has to figure out how to resolve.
+Conflicts are a necessary consequence of optimistic writes.</p> <p>How to decide if version v2 contains all of v1's updates?
+I.e. when no updates would be lost by replacing v1 with v2.
+We could record each file's entire modification history.
+List of hostname/localtime pairs.
+And carry history along when synchronizing between hosts.
+For example 1:   H2: H1/T1,H2/T2   H3: H1/T1
+For example 2:   H1: H1/T1,H1/T2   H2: H1/T1,H2/T3
+Then its easy to decide if version X supersedes version Y:
+If Y's history is a prefix of X's history.</p> <p>We can use VTs to compress these histories!
+Each host remembers a VT per file
+Number each host's writes to a file (or assign wall-clock times)
+Just remember # of last write from each host
+VT[i]=x =&gt; file version includes all of host i's updates through #x</p> <p>VTs for Example 1:
+After H1's change: v1=&lt;1,0,0&gt;
+After H2's change: v2=&lt;1,1,0&gt;
+v1 &lt; v2, so H2 ignores H3's copy (no conflict since &lt;)
+v2 &gt; v1, so H1/H3 would accept H2's copy (again no conflict)</p> <p>VTs for Example 2:
+After H1's first change: v1=&lt;1,0,0&gt;
+After H1's second change: v2=&lt;2,0,0&gt;
+After H2's change: v3=&lt;1,1,0&gt;
+v3 neither &lt; nor &gt; v1
+thus neither has seen all the other's updates
+thus there's a conflict</p> <p>What if there <em>are</em> conflicting updates?
+VTs can detect them, but then what?
+Depends on the application.
+Easy: mailbox file with distinct immutable messages, just union.
+Medium: changes to different lines of a C source file (diff+patch).
+Hard: changes to the same line of C source.
+Reconciliation must be done manually for the hard cases.
+Today's paper is all about reconciling conflicts</p> <p>How to think about VTs for file synchronization?
+They detect whether there was a serial order of versions
+I.e. when I modified the file, had I already seen your modification?
+If yes, no conflict
+If no, conflict
+Or:
+A VT summarizes a file's complete version history
+There's no conflict if your version is a prefix of my version</p> <p>What about file deletion?
+Can H1 just forget a file's VT if it deletes the file?
+No: when H1 syncs w/ H2, it will look like H2 has a new file.
+H1 must remember deleted files' VTs.
+Treat delete like a file modification.
+H1: f=1  -&gt;H2
+H2:           del  -&gt;H1
+second sync sees H1:&lt;1,0&gt; H2&lt;1,1&gt;, so delete wins at H1
+There can be delete/write conflicts
+H1: f=1  -&gt;H2  f=2
+H2:            del  -&gt;H1
+H1:&lt;2,0&gt; vs H2:&lt;1,1&gt; -- conflict
+Is it OK to delete at H1?</p> <p>Can a node ever discard a deleted file's VT?
+Similar danger: discard VT, then sync w/ node that didn't discard.</p> <p>How Ficus forgets about a deleted file's VT
+H1: del f -&gt;all seen f-&gt;all  done f-&gt;all   forget f
+H2:             seen f-&gt;all  done f-&gt;all   forget f
+H3:             seen f-&gt;all  done f-&gt;all   forget f
+|-- phase 1 -----------|-- phase 2 --|
+Phase 1: accumulate set of nodes that have seen delete
+terminates when == complete set of nodes
+Phase 2: accumulate set of nodes that have completed Phase 1
+when == all nodes, can totally forget the file
+If H1 then syncs against H2,
+H2 must be in Phase 2, or completed Phase 2
+if in Phase 2, H2 knows H1 once saw the delete, so need not tell H1 abt file
+if H2 has completed Phase 2, it doesn't know about the file either</p> <p>A classic problem with VTs:
+Many hosts -&gt; big VTs
+Easy for VT to be bigger than the data!
+No very satisfying solution</p> <p>Many file synchronizers don't use VTs -- e.g. Unison, rsync
+File modification times are enough if only two parties, or star
+Need to remember time of last sync, time of modification
+Conflict if both nodes' modification times are greater than last sync
+VTs needed if you want any-to-any sync with &gt; 2 hosts</p> <p>Summary
+Replication + optimistic updates for speed, high availability
+Causal consistency yields sane order of optimistic updates (CBCAST)
+Vector Timestamps detect conflicting updates
+by compactly summarizing update histories</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">lastUpdate:</span> <span class="time">4/6/2021, 2:11:34 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note/mit/fen-bu-shi-xi-tong/10.html" class="prev">
+        10.Distributed Computing: Relaxed consistency
+      </a></span> <span class="next"><a href="/note/mit/fen-bu-shi-xi-tong/12.html">
+        13.Disconnected Operation: Eventual Consistency
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/note/assets/js/app.d5006f3d.js" defer></script><script src="/note/assets/js/2.65e5b2f3.js" defer></script><script src="/note/assets/js/92.accc5e5d.js" defer></script>
+  </body>
+</html>
