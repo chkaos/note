@@ -20,7 +20,7 @@ CS144 is an introductory course about computer networks.  You will learn about t
 - 经济改变: 
   - 互联网新贵崛起, 福布斯富豪榜改变, 资本流向变动
 
-![新增职位大量中网络相关]("~@assets/80/jobs.jpg")
+![新增职位大量中网络相关](~@assets/80/jobs.jpg)
 
 ### 主要内容
 - 计算机网络是如何工作: 原则, 设计, 实施

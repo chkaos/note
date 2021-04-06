@@ -64,7 +64,7 @@ type AvlTree struct {
 
 旋转有4种情况, 左旋, 右旋, 先左后右, 先右再左(后面2种需要2次旋转)
 
-![avl]("~@assets/50/avl.png")
+![avl](~@assets/50/avl.png)
 
 ~~~go
 func llRotation(node *Node) *Node {

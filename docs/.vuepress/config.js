@@ -1,3 +1,6 @@
+const getConfig = require("vuepress-bar");
+const path = require("path")
+const { nav, sidebar } = getConfig();
 
 module.exports = {
     base: "/note/",
@@ -14,30 +17,32 @@ module.exports = {
         logo: '/favicon.png',
         lastUpdated: 'lastUpdate', // string | boolean
         nav: [
+            ...nav,
             { text: '博客', link: 'http://chkaos.top' },
             { text: 'Github', link: 'https://github.com/chkaos/note' },
         ],
+        sidebar,
         docsRepo: 'chkaos/note',
         docsDir: '/',
         smoothScroll: true
     },
 
-    plugins: ['permalink-pinyin', ['autobar', { 'pinyinNav': true }], 'rpurl'],
-    chainWebpack: (config, isServer) => {
-        const inlineLimit = 10000
-        config.module.rule('images')
-            .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/)
-            .use('url-loader')
-            .loader('url-loader')
-            .options({
-                limit: inlineLimit,
-                name: `assets/img/[name].[hash:8].[ext]`
-            })
-    },
+    plugins: ['permalink-pinyin', 'rpurl'],
+    // chainWebpack: (config, isServer) => {
+    //     const inlineLimit = 10000
+    //     config.module.rule('images')
+    //         .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/)
+    //         .use('url-loader')
+    //         .loader('url-loader')
+    //         .options({
+    //             limit: inlineLimit,
+    //             name: `assets/img/[name].[hash:8].[ext]`
+    //         })
+    // },
     configureWebpack: {
         resolve: {
           alias: {
-            '@assets': './assets'
+            '@assets':path.resolve(__dirname, '../../assets')
           }
         }
       }

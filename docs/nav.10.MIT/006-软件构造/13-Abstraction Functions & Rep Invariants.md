@@ -6,7 +6,7 @@ Rep invariants can often be translated to code, and used to periodically check w
 例如 面向对象语言有 private 和 public 等修饰符来控制可见性, golang在package内通过首字母大小写来简单控制其可见性.
 
 ### Rep不变和抽象函数
-![rep]("~@assets/60/rep.png")
+![rep](~@assets/60/rep.png)
 
 ### Documenting the AF, RI, and Safety from Rep Exposure
 

@@ -21,7 +21,7 @@
   "homepage": "https://github.com/chkaos/note#readme",
   "devDependencies": {
     "vuepress": "^1.1.0",
-    "vuepress-plugin-autobar": "github:boboidream/vuepress-bar",
+    "vuepress-bar": "latest",
     "vuepress-plugin-permalink-pinyin": "^1.0.0",
     "vuepress-plugin-rpurl": "github:boboidream/vuepress-plugin-rpurl"
   }

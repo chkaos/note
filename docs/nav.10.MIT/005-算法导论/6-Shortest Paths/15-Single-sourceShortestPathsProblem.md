@@ -23,7 +23,7 @@ works on positive and negative, weight edges
 
 寻找最短路径的同时可以搜寻 负-循环.
 
-![Bellman-Ford-For-Non-Negative-Circles]("~@assets/50/Bellman-Ford.png")
+![Bellman-Ford-For-Non-Negative-Circles](~@assets/50/Bellman-Ford.png)
 
 优化点:
 - 最短路径的子路径均是最短路径

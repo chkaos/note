@@ -26,7 +26,7 @@ NP = {problems solvable in polynomial O(n^c) time via a "lucky" 算法}
 -  cannot engineer luck
 -  generating (proofs of) solutions can be harder than checking them
 
-~[np complete]("~@assets/50/np.png")
+~[np complete](~@assets/50/np.png)
 
 ### Reductions
 Convert your problem into a problem you already know how to solve (instead of solving from scratch)

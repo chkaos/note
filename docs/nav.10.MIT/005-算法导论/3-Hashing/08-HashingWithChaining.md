@@ -58,7 +58,7 @@ and the load factor α (OA degrades past 70% or so and in any event cannot suppo
 
 又称散列算法、哈希函数，是一种从任何一种数据中创建小的数字“指纹”的方法。散列函数把消息或数据压缩成摘要，使得数据量变小，将数据的格式固定下来。该函数将数据打乱混合，重新创建一个叫做散列值（hash values，hash codes，hash sums，或hashes）的指纹。散列值通常用一个短的随机字母和数字组成的字符串来代表。好的散列函数在输入域中很少出现散列冲突。在散列表和数据处理中，不抑制冲突来区别数据，会使得数据库记录更难找到。
 
-![hash-function]("~@assets/50/hash-function.png")
+![hash-function](~@assets/50/hash-function.png)
 
 #### Division Method
 `h(k) = k mod m`
